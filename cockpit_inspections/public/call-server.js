@@ -1,130 +1,6 @@
 //website for helping get local host site across other comps
 //https://stackoverflow.com/questions/5524116/accessing-localhost-xampp-from-another-computer-over-lan-network-how-to
 
-
-function handleViewButton(){
-    console.log("View clicked");
-
-    const url = "http://localhost:3000";
-    let lineSelect = document.getElementById('line')
-    let lineValue = lineSelect.options[lineSelect.selectedIndex].text
-
-    let stationSelect = document.getElementById('station')
-    let stationValue = stationSelect.options[stationSelect.selectedIndex].text
-
-    let sortBy = document.getElementById('sort')
-    let sortByValue = sortBy.options[stationSelect.selectedIndex].text
-
-    const fetchObject = {
-        method: 'GET',
-        headers: {
-            'Content-Type' : 'text/html'
-        }
-    };
-    console.log(url + "/getpart/" + lineValue + "/" + stationValue)
-    fetch(url + "/getpart/" + lineValue + "/" + stationValue, fetchObject)
-        .then(res => res.json())
-        .then(
-            data => {console.log(data)
-            fillTable(data)
-            });
-
-}
-
-function handleViewAllButton(){
-    console.log("View All clicked");
-
-    const url = "http://localhost:3000";
-
-    const fetchObject = {
-        method: 'GET',
-        headers: {
-            'Content-Type' : 'text/html'
-        }
-    };
-    console.log(url + "/getpart/")
-    fetch(url + "/getpart/", fetchObject)
-        .then(res => res.json())
-        .then(
-            data => {console.log(data)
-            fillTable(data)
-            });
-}
-
-function handleAddButton(){
-    console.log("add button clicked");
-
-    let lineSelect = document.getElementById('addLine')
-    let lineValue = lineSelect.options[lineSelect.selectedIndex].text
-
-    let stationSelect = document.getElementById('addStation')
-    let stationValue = stationSelect.options[stationSelect.selectedIndex].text
-
-    let partInput = document.getElementById('partName')
-    let partName = partInput.value
-
-    let descriptionInput = document.getElementById('partDescription')
-    let description = descriptionInput.value
-
-    let currDate = new Date().toLocaleDateString();
-    let currTime = new Date().toLocaleTimeString();
-
-    let signatureInput = document.getElementById('personSignature')
-    let signatureValue = signatureInput.value
-
-    console.log("date = " + currDate);
-    console.log("Add " + lineValue + " " + stationValue + " " + partName + " " + description)
-
-    const url = "http://localhost:3000/addpart";
-
-    const dataObject = {
-        line: lineValue,
-        station: stationValue,
-        part: partName,
-        desc: description,
-        date: currDate,
-        time: currTime,
-        signature: signatureValue
-    }
-
-    console.log("line = " + JSON.stringify(dataObject).line)
-    console.log('\n')
-
-    const fetchObject = {
-        method: 'POST',
-        headers: {
-            'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify(dataObject)
-    };
-    console.log(url + lineValue + "/" + stationValue + "/" + partName + "/" + description)
-    fetch(url, fetchObject)
-        .then(res => res.json())
-        .then(jsonObject => {
-            console.log("jsonObject.line = " + jsonObject.line)
-            console.log('\n')
-        }
-            );
-}
-
-function handleDeleteButton(id){
-    console.log(id);
-
-    const url = "http://localhost:3000/deletepart/"
-
-    if(confirm("Are you sure you want to delete? Deleted items can't be recovered.")){
-        const fetchObject = {
-            method: 'GET',
-            headers: {
-                'Content-Type' : 'text/html'
-            },
-        };
-    
-        fetch(url + id, fetchObject)
-    }
-    
-}
-
 function fillTable(data) {
     
     const table = document.getElementById("logsTable");
@@ -180,76 +56,34 @@ function clearTable() {
     }
 }
 
-function handleSubmitButtonWrite() {
-    console.log("submit button clicked");
-    
-    const url = "http://localhost:3000/add1stPieceApprovalProcess"
-
-    let initialsSelect = document.getElementById('initials')
-    let initialValue = initialsSelect.options[initialsSelect.selectedIndex].text
+function handleFetchExistingButton() {
+    let pressSelect = document.getElementById('line')
+    let pressValue = lineSelect.options[lineSelect.selectedIndex].text
 
     let shiftSelect = document.getElementById('shift')
     let shiftValue = shiftSelect.options[shiftSelect.selectedIndex].text
 
-    let pressSelect = document.getElementById('press')
-    let pressValue = pressSelect.options[pressSelect.selectedIndex].text
-
-    let cavitySelect = document.getElementById('cavity')
-    let cavityValue = cavitySelect.options[cavitySelect.selectedIndex].text
-
-    let partName = document.getElementById('partName')
-    let partNameValue = partName.value
-
     let currDate = new Date().toLocaleDateString();
-    let currTime = new Date().toLocaleTimeString();
+    const date = (currDate).split('/');
+    const parsedDate = date[0] + date[1] + date[2];
 
-    let moldSet = document.getElementById('moldSet')
-    let moldSetValue = moldSet.value
+    const url = "http://localhost:3500/users/";
 
-    let purgeIn = document.getElementById('purgeIn')
-    let purgeInValue = purgeIn.value
-
-    let down8 = document.getElementById('down8')
-    let down8Value = down8.value
-
-    let processChange = document.getElementById('processChange')
-    let processChangeValue = processChange.value
-
-    const dataObject = {
-        initial: initialValue,
-        shift: shiftValue,
-        pressNum: pressValue,
-        cavityNum: cavityValue,
-        part: partNameValue,
-        date: currDate,
-        time: currTime,
-        moldSet: moldSetValue,
-        purgeIn: purgeInValue,
-        down8: down8Value,
-        processChange: processChangeValue,
-    }
+    let fileName = "s" + shiftValue + 'd' + parsedDate + 'p' + pressValue;
 
     const fetchObject = {
-        method: 'POST',
+        method: 'GET',
         headers: {
-            'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify(dataObject)
-    }
+            'Content-Type' : 'text/html'
+        }
+    };
 
-    console.log(url)
-    fetch(url, fetchObject)
+    fetch(url + fileName, fetchObject)
         .then(response => response.json())
         .then(jsonObject => {
-            console.log("fetch")
             console.log(jsonObject);
-        });
+        })
 
-}
-
-function handleFetchExistingButton() {
-    let initialsSelect = document.getElementById('initials')
-    let initialValue = initialsSelect.options[initialsSelect.selectedIndex].text
 }
 
 function start() {

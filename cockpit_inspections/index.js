@@ -13,73 +13,7 @@ app.use(cors({origin: '*'}));
 app.use(express.json());
 
 
-// const port = 3001
-// app.listen(port, () => console.log('listening on port ' + port));
-// app.use(express.static('public'));
 
-//create Connection
-// const db = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'cockpit_inspections'
-// })
-
-//connect to MySQL
-// db.connect(err => {
-//     if(err) {
-//         throw err
-//     }
-//     console.log('Connected to MySQL')
-// })
-
-//Create db
-// app.get('/createdb', (req, res) => {
-//     let sql = 'CREATE DATABASE partlist';
-//     db.query(sql, (err) => {
-//         if(err){
-//             throw err;
-//         }
-//         res.send("Database Created");
-//     });
-// });
-
-//Create Table
-// app.get('/createTable', (req, res) => {
-//     let sql = 'CREATE TABLE parts(id int AUTO_INCREMENT, line int, station VARCHAR(20), part VARCHAR(255), description VARCHAR(2024), date VARCHAR(10), time VARCHAR(10), signature VARCHAR(25), PRIMARY KEY(id))'
-//     db.query(sql, err => {
-//         if(err) {
-//             throw err
-//         }
-//         res.send('Part table created')
-//     })
-// })
-
-//Insert Part manually
-// app.get('/addpart', (req, res) => {
-//     let post = {line: 401, station: 'ASY01', part: 'hammer', description: 'Its hammer time'}
-//     let sql = 'INSERT INTO parts SET ?'
-//     let query = db.query(sql, post, err => {
-//         if(err) {
-//             throw err
-//         }
-//         res.send('Part added')
-//     })
-// })
-
-//Insert post request
-// app.post('/add1stPieceApprovalProcess', (req, res) => {
-//     console.log("post called \n")
-//     //console.log("post inserting " + parseInt(req.body.line) + " " + req.body.station + " " + req.body.part + " " + req.body.desc + " " + req.body.date + '\n')
-//     let post = {Supervisors_initials: req.body.initial, time: req.body.time, date: req.body.date, shift: req.body.shift, Press_num: req.body.pressNum, Cavity_num: req.body.cavityNum, Part_name: req.body.part, Mold_set: req.body.moldSet, Purge_in: req.body.purgeIn, Down_8hrs: req.body.down8, Process_change: req.body.processChange}
-//     let sql = 'INSERT INTO 1st_piece_approval SET ?'
-//     let query = db.query(sql, post, err => {
-//         if(err) {
-//             throw err
-//         }
-//         res.send('Part added')
-//     })
-// })
 
 app.post('/add1stPieceApprovalProcess', (req, res) => {
     console.log("write file")
