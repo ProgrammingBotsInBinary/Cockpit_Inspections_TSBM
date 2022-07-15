@@ -1,0 +1,10 @@
+body {
+    background-color: black;
+}
+table, th, td {
+    border: 1.5px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    background-color: white;
+}

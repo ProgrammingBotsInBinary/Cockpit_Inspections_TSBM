@@ -11,8 +11,13 @@
   </head>
   <body style="background-color: darkgray;">
     <main>
+      <label for="newBtn">Click to begin new Coextrusion molding 1st Piece Inspection Log</label>
+      <a href="1st_piece_approval.html">
         <button id="viewBtn">New</button>
-        <label for="line">Line:</label>
+      </a>
+      <br><br>
+        <p>To fetch an already started log please select press number and shift then press fetch</p>
+        <label for="line">Press:</label>
         <select id="line" name="line">
           <option value="401">401</option>
           <option value="402">402</option>
@@ -23,7 +28,30 @@
           <option value="408">408</option>
           <option value="409">409</option>
         </select>  
-        <button id="viewBtn">Fetch existing</button>
+
+        <label for="shift">Shift:</label>
+        <select id="shift" name="shift">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select> 
+        
+        <button id="fetchBtn">Fetch existing</button>
+
+        <br><br>
+
+        <table id="logsTable">
+          <thread>
+            <tr>
+              <th>Set-up, Stabilize, & Complete "Hot Check" Tank</th>
+              <th>Hot Check</th>
+              <th>Complete Initial 1st Piece Testing</th>
+              <th>Complete Remaining Testing</th>
+              <th>Review and Sign-Off</th>
+              <th>Reaction If 1st Piece Inspection Fails:</th>
+            </tr>
+          </thread>
+        </table>
     </main>
 	
   </body>

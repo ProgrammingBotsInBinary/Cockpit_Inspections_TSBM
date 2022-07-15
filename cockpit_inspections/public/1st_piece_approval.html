@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prepare for 1st Piece Approval Process</title>
+    <link rel = "stylesheet" href="Style/main.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="call-server.js"></script>
+  </head>
+  <body style="background-color: darkslategray;">
+    <main>
+        <p>Prepare for 1st Piece Approval Process</p>
+        <br>
+        <label>Supervisor's Initials:</label>
+        <select id="initials" name="initials">
+            <option value="JB">JB</option>
+            <option value="KC">KC</option>
+            <option value="JJ">JJ</option>
+          </select>  
+
+          <label>Shift:</label>
+        <select id="shift" name="shift">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>  
+
+          <label>Press #</label>
+        <select id="press" name="press">
+            <option value="401">401</option>
+          <option value="402">402</option>
+          <option value="403">403</option>
+          <option value="404">404</option>
+          <option value="406">406</option>
+          <option value="407">407</option>
+          <option value="408">408</option>
+          <option value="409">409</option>
+          </select>  
+
+          <label>Cavity #</label>
+        <select id="cavity" name="cavity">
+            <option value="401">401</option>
+          <option value="402">402</option>
+          <option value="403">403</option>
+          <option value="404">404</option>
+          <option value="406">406</option>
+          <option value="407">407</option>
+          <option value="408">408</option>
+          <option value="409">409</option>
+          </select>  
+
+          <label for="partName">Name of part:</label>
+            <input type="text" id="partName" maxlength="255">
+
+            <br><br>
+
+            <input type="radio" id="moldSet" name="Supervisor_options2" value="moldSet">
+                    <label for="moldSet">Mold Set</label>
+                    <input type="radio" id="purgeIn" name="Supervisor_options2" value="purgeIn">
+                    <label for="purgeIn">Purge-In</label>
+                    <input type="radio" id="down8" name="Supervisor_options2" value="down8">
+                    <label for="down8">Down > 8 Hours</label>
+                    <input type="radio" id="processChange" name="Supervisor_options2" value="processChange">
+                    <label for="processChange">Process Change (e.g. Major parameter adjustment, etc.</label>
+
+            <br>
+            <br>
+            <br>
+<div>
+            <input type="radio" id="A" name="Supervisor_options" value="A">
+            <label for="A">Option A - Build & Hold (Ensure that end items are built on Hold)</label>
+                    <label>Supervisor</label>
+                    <input type="radio" id="yes1" name="Supervisor_options2" value="yes">
+                    <label for="yes">Yes</label>
+                    <input type="radio" id="no1" name="Supervisor_options2" value="no">
+                    <label for="no">no</label>
+                    <input type="radio" id="NA1" name="Supervisor_options2" value="NA">
+                    <label for="NA">N/A</label>
+</div>
+            <input type="radio" id="B" name="Supervisor_options" value="B">
+            <label for="B">Option B - Idle Press</label><br>
+
+<div>
+            <input type="radio" id="C" name="Supervisor_options" value="C">
+            <label for="C">Option C - Pack Off (Ensure that the molded stock is molded on Hold)</label>
+                    <label>Supervisor</label>
+                    <input type="radio" id="yes1" name="Supervisor_options2" value="yes">
+                    <label for="yes">Yes</label>
+                    <input type="radio" id="no1" name="Supervisor_options2" value="no">
+                    <label for="no">no</label>
+                    <input type="radio" id="NA1" name="Supervisor_options2" value="NA">
+                    <label for="NA">N/A</label>
+</div>
+
+          <br><br>
+
+          <a href="index.html">
+            <button id="viewBtn">Back</button>
+          </a>
+          <button id="submitBtn">Submit</button>
+
+
+    </main>
+	
+  </body>
+</html>

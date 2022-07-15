@@ -1,3 +1,7 @@
+//website for helping get local host site across other comps
+//https://stackoverflow.com/questions/5524116/accessing-localhost-xampp-from-another-computer-over-lan-network-how-to
+
+
 function handleViewButton(){
     console.log("View clicked");
 
@@ -123,7 +127,7 @@ function handleDeleteButton(id){
 
 function fillTable(data) {
     
-    const table = document.getElementById("partsTable");
+    const table = document.getElementById("logsTable");
 
     if(table.rows.length > 1){
         clearTable()
@@ -176,14 +180,84 @@ function clearTable() {
     }
 }
 
-function start() {
-    const viewButton = document.querySelector('#viewBtn');
-    const viewAllButton = document.querySelector('#viewAllBtn');
-    const addButton = document.querySelector('#addBtn');
+function handleSubmitButtonWrite() {
+    console.log("submit button clicked");
+    
+    const url = "http://localhost:3000/add1stPieceApprovalProcess"
 
-    viewButton.onclick = handleViewButton;
-    viewAllButton.onclick = handleViewAllButton;
-    addButton.onclick = handleAddButton;
+    let initialsSelect = document.getElementById('initials')
+    let initialValue = initialsSelect.options[initialsSelect.selectedIndex].text
+
+    let shiftSelect = document.getElementById('shift')
+    let shiftValue = shiftSelect.options[shiftSelect.selectedIndex].text
+
+    let pressSelect = document.getElementById('press')
+    let pressValue = pressSelect.options[pressSelect.selectedIndex].text
+
+    let cavitySelect = document.getElementById('cavity')
+    let cavityValue = cavitySelect.options[cavitySelect.selectedIndex].text
+
+    let partName = document.getElementById('partName')
+    let partNameValue = partName.value
+
+    let currDate = new Date().toLocaleDateString();
+    let currTime = new Date().toLocaleTimeString();
+
+    let moldSet = document.getElementById('moldSet')
+    let moldSetValue = moldSet.value
+
+    let purgeIn = document.getElementById('purgeIn')
+    let purgeInValue = purgeIn.value
+
+    let down8 = document.getElementById('down8')
+    let down8Value = down8.value
+
+    let processChange = document.getElementById('processChange')
+    let processChangeValue = processChange.value
+
+    const dataObject = {
+        initial: initialValue,
+        shift: shiftValue,
+        pressNum: pressValue,
+        cavityNum: cavityValue,
+        part: partNameValue,
+        date: currDate,
+        time: currTime,
+        moldSet: moldSetValue,
+        purgeIn: purgeInValue,
+        down8: down8Value,
+        processChange: processChangeValue,
+    }
+
+    const fetchObject = {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(dataObject)
+    }
+
+    console.log(url)
+    fetch(url, fetchObject)
+        .then(response => response.json())
+        .then(jsonObject => {
+            console.log("fetch")
+            console.log(jsonObject);
+        });
+
+}
+
+function handleFetchExistingButton() {
+    let initialsSelect = document.getElementById('initials')
+    let initialValue = initialsSelect.options[initialsSelect.selectedIndex].text
+}
+
+function start() {
+    const submitButton = document.querySelector('#submitBtn');
+    const fetchExistingButton = document.querySelector('#fetchBtn')
+
+    submitButton.onclick = handleSubmitButtonWrite;
+    fetchExistingButton.onClick = handleFetchExistingButton;
 }
 
 
