@@ -244,17 +244,11 @@ function handleSubmitButtonWrite() {
 
 }
 
-function handleFetchExistingButton() {
-    let initialsSelect = document.getElementById('initials')
-    let initialValue = initialsSelect.options[initialsSelect.selectedIndex].text
-}
 
 function start() {
     const submitButton = document.querySelector('#submitBtn');
-    const fetchExistingButton = document.querySelector('#fetchBtn')
 
     submitButton.onclick = handleSubmitButtonWrite;
-    fetchExistingButton.onClick = handleFetchExistingButton;
 }
 
 

@@ -1,6 +1,8 @@
 //website for helping get local host site across other comps
 //https://stackoverflow.com/questions/5524116/accessing-localhost-xampp-from-another-computer-over-lan-network-how-to
 
+//import {readJSON} from "../index.js"
+
 function fillTable(data) {
     
     const table = document.getElementById("logsTable");
@@ -57,40 +59,51 @@ function clearTable() {
 }
 
 function handleFetchExistingButton() {
-    let pressSelect = document.getElementById('line')
-    let pressValue = lineSelect.options[lineSelect.selectedIndex].text
+    console.log("fetch pressed");
+    // let pressSelect = document.getElementById('line')
+    // let pressValue = pressSelect.options[lineSelect.selectedIndex].text
 
-    let shiftSelect = document.getElementById('shift')
-    let shiftValue = shiftSelect.options[shiftSelect.selectedIndex].text
+    // let shiftSelect = document.getElementById('shift')
+    // let shiftValue = shiftSelect.options[shiftSelect.selectedIndex].text
 
-    let currDate = new Date().toLocaleDateString();
-    const date = (currDate).split('/');
-    const parsedDate = date[0] + date[1] + date[2];
+    // let currDate = new Date().toLocaleDateString();
+    // const date = (currDate).split('/');
+    // const parsedDate = date[0] + date[1] + date[2];
 
-    const url = "http://localhost:3500/users/";
+    // const url = "http://localhost:3000/";
 
-    let fileName = "s" + shiftValue + 'd' + parsedDate + 'p' + pressValue;
+    // let fileName = "s" + shiftValue + 'd' + parsedDate + 'p' + pressValue;
+    // console.log("File name = " + fileName + " , seeking url => " + url + fileName)
 
-    const fetchObject = {
-        method: 'GET',
-        headers: {
-            'Content-Type' : 'text/html'
-        }
-    };
+    // let data = readJSON(fileName);
+    // console.log("data recived: \n" + data)
 
-    fetch(url + fileName, fetchObject)
-        .then(response => response.json())
-        .then(jsonObject => {
-            console.log(jsonObject);
-        })
+    // const fetchObject = {
+    //     method: 'GET',
+    //     headers: {
+    //         'Content-Type' : 'text/html'
+    //     }
+    // };
+    
+    //     fetch(url + fileName, fetchObject)
+    //     .then(response => response.json())
+    //     .then(jsonObject => {
+    //         console.log(jsonObject);
+    //     })
+    
+    // if("../data/" + fileName){
+    //     console.log("file: " + fileName + " found");
+        
+    // } else {
+    //     console.log("error file does not exist");
+    // }
 
 }
 
-function start() {
-    const submitButton = document.querySelector('#submitBtn');
-    const fetchExistingButton = document.querySelector('#fetchBtn')
 
-    submitButton.onclick = handleSubmitButtonWrite;
+function start() {
+    const fetchExistingButton = document.querySelector('#fetchExistingBtn')
+
     fetchExistingButton.onClick = handleFetchExistingButton;
 }
 

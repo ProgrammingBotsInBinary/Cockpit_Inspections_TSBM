@@ -12,8 +12,29 @@ const cors = require('cors');
 app.use(cors({origin: '*'}));
 app.use(express.json());
 
+function readJSON(fileName) {
+    readFile(fileName + '.JSON', 'utf-8', (err, jsonString) => {
+        if (err) {
+            console.log(err);
+        } else {
+            try {
+                const data = JSON.parse(jsonString);
+                console.log(data)
+                return data;
+            } catch (err) {
+                console.log("Error parsing JSON", err);
+                return err;
+            }
+        }
+    })
+}
 
 
+app.get('/getData/:fileName', (req, res) => {
+    data = JSON.parse(fs.readFileSync(req.params.fileName + ".JSON", 'utf8'));
+    console.log('received from client: ' + req.query.first_piece_approval)
+    res.send(data);
+});
 
 app.post('/add1stPieceApprovalProcess', (req, res) => {
     console.log("write file")
