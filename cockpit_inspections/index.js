@@ -13,6 +13,7 @@ app.use(cors({origin: '*'}));
 app.use(express.json());
 
 function readJSON(fileName) {
+    console.log("poopy stink")
     readFile(fileName + '.JSON', 'utf-8', (err, jsonString) => {
         if (err) {
             console.log(err);
@@ -31,8 +32,11 @@ function readJSON(fileName) {
 
 
 app.get('/getData/:fileName', (req, res) => {
-    data = JSON.parse(fs.readFileSync(req.params.fileName + ".JSON", 'utf8'));
+    data = JSON.parse(fs.readFileSync("../data/" + req.params.fileName + ".JSON", 'utf8'));
     console.log('received from client: ' + req.query.first_piece_approval)
+    data = JSON.stringify(data);
+    dataLength = data.length;
+    
     res.send(data);
 });
 
@@ -60,6 +64,41 @@ app.post('/add1stPieceApprovalProcess', (req, res) => {
     data.first_piece_approval.push(supervisorData)
     console.log("data/" + "s" + shift + "d" + parsedDate + ".JSON")
     fs.writeFileSync("../data/" + "s" + shift + "d" + parsedDate + "p" + pressNum + ".JSON", JSON.stringify(data));
+});
+
+app.post('/setupStabilizeComplete', (req, res) => {
+    console.log("write file")
+    let currDate = new Date().toLocaleDateString();
+    const date = (currDate).split('/');
+    const parsedDate = date[0] + date[1] + date[2];
+    const shift = req.body.shift;
+    const pressNum = req.body.pressNum;
+    var data = {}
+    data.first_piece_approval = []
+    data.setup_stabilize_complete = []
+    const processTechData = {
+        initial: req.body.initial,
+        q1: req.body.q1,
+        q2: req.body.q2,
+        q3: req.body.q3,
+        q4: req.body.q4,
+        q5: req.body.q5,
+        q6: req.body.q6,
+    };
+
+    //get data from last step
+    let prevData = JSON.parse(fs.readFileSync("../data/" + req.body.fileName + ".JSON", 'utf-8'))
+
+    console.log(prevData)
+    
+    data.first_piece_approval.push(prevData.first_piece_approval[0])
+    data.setup_stabilize_complete.push(processTechData)
+
+    console.log(data)
+
+    fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
+
+    
 });
 
 app.listen('3000', () => {

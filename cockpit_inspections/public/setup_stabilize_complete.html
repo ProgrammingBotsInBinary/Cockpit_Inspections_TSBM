@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Setup, Stabilize, & Complete "Hot Check" Tank</title>
     <link rel = "stylesheet" href="Style/main.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <!-- <script src="call-server.js"></script> -->
+    <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
+    <script src="setup_stabilize_complete.js"></script>
   </head>
   <body style="background-color: darkgray;">
     <main>
@@ -29,7 +29,56 @@
                     <label for="no">no</label>
                     <input type="radio" id="NA1" name="ProcessTech_options1" value="NA">
                     <label for="NA">N/A</label>
+         
+          <div>
+            <label for="B">- Complete Molding Process Start-Up Checklist (HURF-IND-0005)</label>
+                    <label>Process Tech.</label>
+                    <input type="radio" id="yes2" name="ProcessTech_options2" value="yes">
+                    <label for="yes">Yes</label>
+                    <input type="radio" id="no2" name="ProcessTech_options2" value="no">
+                    <label for="no">no</label>
           </div>
+          <p>- Inspect for molding anomalies</p>
+          <div>
+            <label for="C">- Inner layer is the appropriate material (black for TTIR welding)</label>
+                    <label>Process Tech.</label>
+                    <input type="radio" id="pass1" name="ProcessTech_options3" value="yes">
+                    <label for="yes">Pass</label>
+                    <input type="radio" id="fail1" name="ProcessTech_options3" value="no">
+                    <label for="no">Fail</label>
+          </div>
+          <div>
+            <label for="D">- No surface defects (folds, gouges, excess flash)</label>
+                    <label>Process Tech.</label>
+                    <input type="radio" id="pass1" name="ProcessTech_options4" value="yes">
+                    <label for="yes">Pass</label>
+                    <input type="radio" id="fail1" name="ProcessTech_options4" value="no">
+                    <label for="no">Fail</label>
+          </div>
+          <div>
+            <label for="E">- No degraded material greater than 6mm / No contamination</label>
+                    <label>Process Tech.</label>
+                    <input type="radio" id="pass1" name="ProcessTech_options5" value="yes">
+                    <label for="yes">Pass</label>
+                    <input type="radio" id="fail1" name="ProcessTech_options5" value="no">
+                    <label for="no">Fail</label>
+          </div>
+          <div>
+            <label for="F">- All tanks molded prior to 1st piece tank were scrapped</label>
+                    <label>Process Tech.</label>
+                    <input type="radio" id="pass1" name="ProcessTech_options6" value="yes">
+                    <label for="yes">Yes</label>
+                    <input type="radio" id="fail1" name="ProcessTech_options6" value="no">
+                    <label for="no">No</label>
+          </div>
+
+          <br>
+
+          <a href="index.html">
+            <button id="backBtn">Back</button>
+          </a>
+          <button id="submitBtn">Submit</button>
+
     </main>
 	
   </body>

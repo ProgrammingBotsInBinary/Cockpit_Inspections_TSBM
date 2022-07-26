@@ -242,6 +242,8 @@ function handleSubmitButtonWrite() {
             console.log(jsonObject);
         });
 
+        window.location.href = "index.html"
+
 }
 
 
