@@ -58,6 +58,8 @@ function fillFileds(data){
     document.getElementById('zone2').value = data.hotCheck[0].zone2
     document.getElementById('below').value = data.hotCheck[0].below
 
+    //Complete initial 1st piece testing
+
     
     
 }

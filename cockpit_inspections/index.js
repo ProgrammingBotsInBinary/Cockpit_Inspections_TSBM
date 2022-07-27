@@ -175,6 +175,41 @@ app.post('/completeInitial1stPieceTesting', (req, res) => {
     fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
 })
 
+app.post('/completeRemainingTesting', (req, res) => {
+    console.log("write file crt check")
+    let currDate = new Date().toLocaleDateString();
+    const date = (currDate).split('/');
+    const parsedDate = date[0] + date[1] + date[2];
+
+    var data = {}
+    data.first_piece_approval = []
+    data.setup_stabilize_complete = []
+    data.hotCheck = []
+    data.completeInitial1stPieceTesting = []
+    data.completeRemainingTesting = []
+    const completeRemainingTesting = {
+        q1: req.body.q1,
+        q2: req.body.q2,
+        q3: req.body.q3,
+        q4: req.body.q4,
+    };
+
+    //get data from last step
+    let prevData = JSON.parse(fs.readFileSync("../data/" + req.body.fileName + ".JSON", 'utf-8'))
+
+    console.log(prevData)
+    
+    data.first_piece_approval.push(prevData.first_piece_approval[0])
+    data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
+    data.hotCheck.push(prevData.hotCheck[0])
+    data.completeInitial1stPieceTesting.push(prevData.completeInitial1stPieceTesting[0])
+    data.completeRemainingTesting.push(completeRemainingTesting)
+
+    console.log(data)
+
+    fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
+})
+
 app.listen('3000', () => {
     console.log('Listening on port 3000')
 })

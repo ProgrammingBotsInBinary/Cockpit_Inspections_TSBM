@@ -129,20 +129,35 @@ function findNextStage(data){
     }else if(!data.hotCheck){
         localStorage.setItem("fileName", fileName)
         window.location.href = "hot_check.html"
-    }else if(data.hotCheck && !data.complete_initial_1st_piece_testing){
+    }else if(data.hotCheck && !data.completeInitial1stPieceTesting){
         localStorage.setItem("fileName", fileName)
         window.location.href = "complete_initial_1st_piece_testing.html"
-    }else if(data.complete_initial_1st_piece_testing) {
+    } else if(!data.completeRemainingTesting){
+        localStorage.setItem("fileName", fileName)
+        window.location.href = "complete_remaining_testing.html"
+    }else if(data.completeRemainingTesting) {
         localStorage.setItem("fileName", fileName)
         window.location.href = "final_document.html"
     }
 }
 
+function handleAustinsBtn() {
+    window.location.href = "reaction_1st_inspection_fail.html"
+}
+
+function handleNoahBtn() {
+    window.location.href = "review_and_sign_off.html"
+}
+
 function start() {
     console.log("in start")
     const fetchExistingButton = document.querySelector('#fetchExistingBtn')
+    const austinsBtn = document.querySelector('#austin')
+    const noahBtn = document.querySelector('#noah')
 
     fetchExistingButton.onclick = handleFetchExistingButton;
+    austinsBtn.onclick = handleAustinsBtn;
+    noahBtn.onclick = handleNoahBtn;
 }
 
 

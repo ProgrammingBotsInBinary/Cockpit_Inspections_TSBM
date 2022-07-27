@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Setup, Stabilize, & Complete "Hot Check" Tank</title>
+    <link rel = "stylesheet" href="Style/main.css">
+    <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
+    <script src="reaction_1st_inspection_fail.js"></script>
+  </head>
+  <body style="background-color: darkgray;">
+    <main>
+        <p>Reaction If 1st Piece Inspection Fails:</p>
+        <label>Supervisor's Initials:</label>
+        <select id="initials" name="initials">
+            <option value="JB">JB</option>
+            <option value="KC">KC</option>
+            <option value="JJ">JJ</option>
+          </select>  
+        <br>
+        <p>- Identify test failure: </p>
+        <br>
+        <div>
+            <label for="A">- Verify that all applicable tanks molded prior to the new 1st Piece have been scrapped or quarantined.</label>
+            <label>Supervisor: </label>
+                        <input type="radio" id="yes1" name="Supervisor_options1" value="Yes">
+                        <label for="Yes">Yes</label>
+                        <input type="radio" id="no1" name="Supervisor_options1" value="No">
+                        <label for="No">No</label>
+        </div>
+        
+        
+        
+        <br><br>
+
+        <a href="index.html">
+            <button id="backBtn">Back</button>
+          </a>
+          <button id="submitBtn">Submit</button>
+
+    </main>
+	
+  </body>
+</html>

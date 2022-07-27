@@ -12,6 +12,8 @@
   </head>
   <body style="background-color: darkslategray;">
     <main>
+      <!--Prepare for 1st Piece Approval Process-->
+      <div id="page1">
         <p>Prepare for 1st Piece Approval Process</p>
         <br>
         <label>Supervisor's Initials:</label>
@@ -94,74 +96,77 @@
                     <input type="radio" id="NA1" name="Supervisor_options3" value="NA">
                     <label for="NA">N/A</label>
 </div>
-
-<!-- setup Stabilize and complete  -->
+      </div>
+        
+      <div id="page2">
+        <!-- setup Stabilize and complete  -->
 <p>Setup, Stabilize, & Complete "Hot Check" Tank</p>
 
-        <br>
-        <label>Process Tech's Initials:</label>
-        <select id="processTechInitials" name="processTechInitials">
-            <option value="JB">JB</option>
-            <option value="KC">KC</option>
-            <option value="JJ">JJ</option>
-          </select>  
-          <div>
-            <label for="A">- Secure and use appropriate mold guide (mold set only)</label>
-                    <label>Process Tech.</label>
-                    <input type="radio" id="yes1" name="ProcessTech_options1" value="yes">
+<br>
+<label>Process Tech's Initials:</label>
+<select id="processTechInitials" name="processTechInitials">
+    <option value="JB">JB</option>
+    <option value="KC">KC</option>
+    <option value="JJ">JJ</option>
+  </select>  
+  <div>
+    <label for="A">- Secure and use appropriate mold guide (mold set only)</label>
+            <label>Process Tech.</label>
+            <input type="radio" id="yes1" name="ProcessTech_options1" value="yes">
                     <label for="yes">Yes</label>
-                    <input type="radio" id="no1" name="ProcessTech_options1" value="no">
+            <input type="radio" id="no1" name="ProcessTech_options1" value="no">
                     <label for="no">no</label>
-                    <input type="radio" id="NA1" name="ProcessTech_options1" value="NA">
+            <input type="radio" id="NA1" name="ProcessTech_options1" value="NA">
                     <label for="NA">N/A</label>
-         
-          <div>
-            <label for="B">- Complete Molding Process Start-Up Checklist (HURF-IND-0005)</label>
-                    <label>Process Tech.</label>
-                    <input type="radio" id="yes2" name="ProcessTech_options2" value="yes">
+ 
+  <div>
+    <label for="B">- Complete Molding Process Start-Up Checklist (HURF-IND-0005)</label>
+            <label>Process Tech.</label>
+            <input type="radio" id="yes2" name="ProcessTech_options2" value="yes">
                     <label for="yes">Yes</label>
-                    <input type="radio" id="no2" name="ProcessTech_options2" value="no">
+            <input type="radio" id="no2" name="ProcessTech_options2" value="no">
                     <label for="no">no</label>
-          </div>
-          <p>- Inspect for molding anomalies</p>
-          <div>
-            <label for="C">- Inner layer is the appropriate material (black for TTIR welding)</label>
-                    <label>Process Tech.</label>
-                    <input type="radio" id="pass1" name="ProcessTech_options3" value="yes">
+  </div>
+  <p>- Inspect for molding anomalies</p>
+  <div>
+    <label for="C">- Inner layer is the appropriate material (black for TTIR welding)</label>
+            <label>Process Tech.</label>
+            <input type="radio" id="pass1" name="ProcessTech_options3" value="yes">
                     <label for="yes">Pass</label>
-                    <input type="radio" id="fail1" name="ProcessTech_options3" value="no">
+            <input type="radio" id="fail1" name="ProcessTech_options3" value="no">
                     <label for="no">Fail</label>
-          </div>
-          <div>
-            <label for="D">- No surface defects (folds, gouges, excess flash)</label>
-                    <label>Process Tech.</label>
-                    <input type="radio" id="pass1" name="ProcessTech_options4" value="yes">
+  </div>
+  <div>
+    <label for="D">- No surface defects (folds, gouges, excess flash)</label>
+            <label>Process Tech.</label>
+            <input type="radio" id="pass1" name="ProcessTech_options4" value="yes">
                     <label for="yes">Pass</label>
-                    <input type="radio" id="fail1" name="ProcessTech_options4" value="no">
+            <input type="radio" id="fail1" name="ProcessTech_options4" value="no">
                     <label for="no">Fail</label>
-          </div>
-          <div>
-            <label for="E">- No degraded material greater than 6mm / No contamination</label>
-                    <label>Process Tech.</label>
-                    <input type="radio" id="pass1" name="ProcessTech_options5" value="yes">
+  </div>
+  <div>
+    <label for="E">- No degraded material greater than 6mm / No contamination</label>
+            <label>Process Tech.</label>
+            <input type="radio" id="pass1" name="ProcessTech_options5" value="yes">
                     <label for="yes">Pass</label>
-                    <input type="radio" id="fail1" name="ProcessTech_options5" value="no">
+            <input type="radio" id="fail1" name="ProcessTech_options5" value="no">
                     <label for="no">Fail</label>
-          </div>
-          <div>
-            <label for="F">- All tanks molded prior to 1st piece tank were scrapped</label>
-                    <label>Process Tech.</label>
-                    <input type="radio" id="pass1" name="ProcessTech_options6" value="yes">
+  </div>
+  <div>
+    <label for="F">- All tanks molded prior to 1st piece tank were scrapped</label>
+            <label>Process Tech.</label>
+            <input type="radio" id="pass1" name="ProcessTech_options6" value="yes">
                     <label for="yes">Yes</label>
-                    <input type="radio" id="fail1" name="ProcessTech_options6" value="no">
+            <input type="radio" id="fail1" name="ProcessTech_options6" value="no">
                     <label for="no">No</label>
-          </div>
-
-          <br><br>
+  </div>
+      </div>
+          <br>
 
           <!-- hot check -->
 
-          <p>Hot Check</p>
+          <div id="page3">
+            <p>Hot Check</p>
         
         <label for="partNum">Hot Check Tank #</label>
             <input type="text" id="partNum" maxlength="4" placeholder="Last 4">
@@ -197,7 +202,93 @@
 
             <p>Fix this</p>
             <p>- Any FAILURES found at Hot check resubmit and attach T-Labels to back of form (reason why & where)</p>
+          </div>
 
+          <br><br>
+
+          <div id="page4">
+            <p>Complete Initial 1st Piece Testing</p>
+        <label>Quality Tech's Initials:</label>
+        <select id="initials" name="initials">
+            <option value="JB">JB</option>
+            <option value="KC">KC</option>
+            <option value="JJ">JJ</option>
+          </select>  
+          <br>
+          <p>- Identify lowest T-label # from submitted samples</p>
+          <label for="partNum">Lowest Tank T-Label #:</label>
+            <input type="text" id="partNum" maxlength="4">
+
+        <div>
+            <label for="A">CMM (Dimensional's)</label>
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass1" name="QualityTech_options1" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail1" name="QualityTech_options1" value="Fail">
+                        <label for="Fail">Fail</label>
+        </div>
+        <div>
+            <label for="B">Critical Walls</label>
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass2" name="QualityTech_options2" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail2" name="QualityTech_options2" value="Fail">
+                        <label for="Fail">Fail</label>
+        </div>
+        <div>
+            <label for="C">Cut-Ups (including full visual check for anomalies)</label>
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass3" name="QualityTech_options3" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail3" name="QualityTech_options3" value="Fail">
+                        <label for="Fail">Fail</label>
+        </div>
+        <div>
+            <label for="D">Die Lock(s) (all coquilles)</label>
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass4" name="QualityTech_options4" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail4" name="QualityTech_options4" value="Fail">
+                        <label for="Fail">Fail</label>
+                        <input type="radio" id="Fail4" name="QualityTech_options4" value="Fail">
+                        <label for="Fail">N/A</label>
+        </div>
+        <div>
+            <label for="E">Bake Test</label>
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass5" name="QualityTech_options5" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail5" name="QualityTech_options5" value="Fail">
+                        <label for="Fail">Fail</label>
+        </div>
+        <div>
+            <label for="F">Drop Test (mold change only)</label>
+            <label for="FTank">Tank #</label>
+            <input type="text" id="FTank" maxlength="4" placeholder="Last 4">
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass6" name="QualityTech_options6" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail6" name="QualityTech_options6" value="Fail">
+                        <label for="Fail">Fail</label>
+                        <input type="radio" id="Fail6" name="QualityTech_options6" value="Fail">
+                        <label for="Fail">N/A</label>
+        </div>
+        <div>
+            <label for="G">Burst Test</label>
+            <label for="GTank">Tank #</label>
+            <input type="text" id="GTank" maxlength="4" placeholder="Last 4">
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass7" name="QualityTech_options7" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail7" name="QualityTech_options7" value="Fail">
+                        <label for="Fail">Fail</label>
+                        <input type="radio" id="Fail7" name="QualityTech_options7" value="Fail">
+                        <label for="Fail">N/A</label>
+        </div>
+        <br><br>
+          </div>
+
+          
           <a href="index.html">
             <button id="backBtn">Back</button>
           </a>
