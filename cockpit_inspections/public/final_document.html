@@ -95,7 +95,7 @@
                     <label for="NA">N/A</label>
 </div>
 
-
+<!-- setup Stabilize and complete  -->
 <p>Setup, Stabilize, & Complete "Hot Check" Tank</p>
 
         <br>
@@ -159,11 +159,50 @@
 
           <br><br>
 
+          <!-- hot check -->
+
+          <p>Hot Check</p>
+        
+        <label for="partNum">Hot Check Tank #</label>
+            <input type="text" id="partNum" maxlength="4" placeholder="Last 4">
+
+            <label> Quality Tech's Initials:</label>
+            <select id="hotCheckInitials" name="initials">
+                <option value="JB">JB</option>
+                <option value="KC">KC</option>
+                <option value="JJ">JJ</option>
+              </select>  
+
+              <br><br>
+
+              <label>- Verify wall thickness (after coquile) including all the external corners (high draw areas)</label>
+              <label>Quality tech:</label>
+              <input type="radio" id="yes1" name="hot_check_options1" value="yes">
+                    <label for="yes">Yes</label>
+              <input type="radio" id="no1" name="hot_check_options1" value="no">
+                    <label for="no">no</label>
+
+              <br><br>
+              <label>- Verify thickness above and below pinch. Record the minimum zones.</label>
+              <label> Quality Tech:</label>
+              <label for="zone1#">Zone#</label>
+            <input type="text" id="zone1" maxlength="6">
+            <label for="above">Above</label>
+            <input type="text" id="above" maxlength="6">
+
+            <label for="zone2#">Zone#</label>
+            <input type="text" id="zone2" maxlength="6">
+            <label for="below">Below</label>
+            <input type="text" id="below" maxlength="6">
+
+            <p>Fix this</p>
+            <p>- Any FAILURES found at Hot check resubmit and attach T-Labels to back of form (reason why & where)</p>
+
           <a href="index.html">
             <button id="backBtn">Back</button>
           </a>
 
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+          <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer">
             $(document).ready(function($){
               console.log("save pdf")
           const element = document.getElementById("element-to-print");
@@ -178,7 +217,7 @@
             await html2pdf().set(opt).from(element).save();
 
             })
-          </script>
+          </script> -->
 
 
     </main>

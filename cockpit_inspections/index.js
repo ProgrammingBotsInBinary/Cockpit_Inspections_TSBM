@@ -101,6 +101,80 @@ app.post('/setupStabilizeComplete', (req, res) => {
     
 });
 
+app.post('/hotCheck', (req, res) => {
+    console.log("write file hot check")
+    let currDate = new Date().toLocaleDateString();
+    const date = (currDate).split('/');
+    const parsedDate = date[0] + date[1] + date[2];
+
+    var data = {}
+    data.first_piece_approval = []
+    data.setup_stabilize_complete = []
+    data.hotCheck = []
+    const hotCheckData = {
+        partNum: req.body.partNum,
+        initial: req.body.initial,
+        q1: req.body.q1,
+        zone1: req.body.zone1,
+        above: req.body.above,
+        zone2: req.body.zone2,
+        below: req.body.below,
+    };
+
+    //get data from last step
+    let prevData = JSON.parse(fs.readFileSync("../data/" + req.body.fileName + ".JSON", 'utf-8'))
+
+    console.log(prevData)
+    
+    data.first_piece_approval.push(prevData.first_piece_approval[0])
+    data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
+    data.hotCheck.push(hotCheckData)
+
+    console.log(data)
+
+    fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
+})
+
+app.post('/completeInitial1stPieceTesting', (req, res) => {
+    console.log("write file hot check")
+    let currDate = new Date().toLocaleDateString();
+    const date = (currDate).split('/');
+    const parsedDate = date[0] + date[1] + date[2];
+
+    var data = {}
+    data.first_piece_approval = []
+    data.setup_stabilize_complete = []
+    data.hotCheck = []
+    data.completeInitial1stPieceTesting = []
+    const completeInitial1stPieceTesting = {
+        initial: req.body.initial,
+        partNum: req.body.partNum,
+        q1: req.body.q1,
+        q2: req.body.q2,
+        q3: req.body.q3,
+        q4: req.body.q4,
+        q5: req.body.q5,
+        tank1: req.body.tank1,
+        q6: req.body.q6,
+        tank2: req.body.tank2,
+        q7: req.body.q7,
+    };
+
+    //get data from last step
+    let prevData = JSON.parse(fs.readFileSync("../data/" + req.body.fileName + ".JSON", 'utf-8'))
+
+    console.log(prevData)
+    
+    data.first_piece_approval.push(prevData.first_piece_approval[0])
+    data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
+    data.hotCheck.push(prevData.hotCheck[0])
+    data.completeInitial1stPieceTesting.push(completeInitial1stPieceTesting)
+
+    console.log(data)
+
+    fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
+})
+
 app.listen('3000', () => {
     console.log('Listening on port 3000')
 })

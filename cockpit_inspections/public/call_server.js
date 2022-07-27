@@ -126,7 +126,13 @@ function findNextStage(data){
     if(!data.setup_stabilize_complete){
         localStorage.setItem("fileName", fileName)
         window.location.href = "setup_stabilize_complete.html"
-    }else if(data.first_piece_approval && data.setup_stabilize_complete){
+    }else if(!data.hotCheck){
+        localStorage.setItem("fileName", fileName)
+        window.location.href = "hot_check.html"
+    }else if(data.hotCheck && !data.complete_initial_1st_piece_testing){
+        localStorage.setItem("fileName", fileName)
+        window.location.href = "complete_initial_1st_piece_testing.html"
+    }else if(data.complete_initial_1st_piece_testing) {
         localStorage.setItem("fileName", fileName)
         window.location.href = "final_document.html"
     }

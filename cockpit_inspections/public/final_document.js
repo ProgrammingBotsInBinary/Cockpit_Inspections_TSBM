@@ -1,8 +1,3 @@
-function handleFetchExistingButton() {
-    
-
-}
-
 function fillFileds(data){
     console.log(data)
     
@@ -39,6 +34,7 @@ function fillFileds(data){
     document.getElementById('processTechInitials').value = data.setup_stabilize_complete[0].initial
 
     var valueQ1 = data.setup_stabilize_complete[0].q1
+    console.log("ValueQ1 = " + valueQ1)
     document.querySelector(`input[name=ProcessTech_options1][value=${valueQ1}]`).checked = true
     var valueQ2 = data.setup_stabilize_complete[0].q2
     document.querySelector(`input[name=ProcessTech_options2][value=${valueQ2}]`).checked = true
@@ -50,6 +46,18 @@ function fillFileds(data){
     document.querySelector(`input[name=ProcessTech_options5][value=${valueQ5}]`).checked = true
     var valueQ6 = data.setup_stabilize_complete[0].q6
     document.querySelector(`input[name=ProcessTech_options6][value=${valueQ6}]`).checked = true
+
+    //hot check
+
+    document.getElementById('partNum').value = data.hotCheck[0].partNum
+    document.getElementById('hotCheckInitials').value = data.hotCheck[0].initial
+    var valueQ1 = data.hotCheck[0].q1
+    document.querySelector(`input[name=hot_check_options1][value=${valueQ1}]`).checked = true
+    document.getElementById('zone1').value = data.hotCheck[0].zone1
+    document.getElementById('above').value = data.hotCheck[0].above
+    document.getElementById('zone2').value = data.hotCheck[0].zone2
+    document.getElementById('below').value = data.hotCheck[0].below
+
     
     
 }

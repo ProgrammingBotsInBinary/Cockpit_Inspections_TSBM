@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Setup, Stabilize, & Complete "Hot Check" Tank</title>
+    <link rel = "stylesheet" href="Style/main.css">
+    <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
+    <script src="complete_initial_1st_piece_testing.js"></script>
+  </head>
+  <body style="background-color: darkgray;">
+    <main>
+        <p>Complete Initial 1st Piece Testing</p>
+        <label>Quality Tech's Initials:</label>
+        <select id="initials" name="initials">
+            <option value="JB">JB</option>
+            <option value="KC">KC</option>
+            <option value="JJ">JJ</option>
+          </select>  
+          <br>
+          <p>- Identify lowest T-label # from submitted samples</p>
+          <label for="partNum">Lowest Tank T-Label #:</label>
+            <input type="text" id="partNum" maxlength="4">
+
+        <div>
+            <label for="A">CMM (Dimensional's)</label>
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass1" name="QualityTech_options1" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail1" name="QualityTech_options1" value="Fail">
+                        <label for="Fail">Fail</label>
+        </div>
+        <div>
+            <label for="B">Critical Walls</label>
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass2" name="QualityTech_options2" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail2" name="QualityTech_options2" value="Fail">
+                        <label for="Fail">Fail</label>
+        </div>
+        <div>
+            <label for="C">Cut-Ups (including full visual check for anomalies)</label>
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass3" name="QualityTech_options3" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail3" name="QualityTech_options3" value="Fail">
+                        <label for="Fail">Fail</label>
+        </div>
+        <div>
+            <label for="D">Die Lock(s) (all coquilles)</label>
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass4" name="QualityTech_options4" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail4" name="QualityTech_options4" value="Fail">
+                        <label for="Fail">Fail</label>
+                        <input type="radio" id="Fail4" name="QualityTech_options4" value="Fail">
+                        <label for="Fail">N/A</label>
+        </div>
+        <div>
+            <label for="E">Bake Test</label>
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass5" name="QualityTech_options5" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail5" name="QualityTech_options5" value="Fail">
+                        <label for="Fail">Fail</label>
+        </div>
+        <div>
+            <label for="F">Drop Test (mold change only)</label>
+            <label for="FTank">Tank #</label>
+            <input type="text" id="FTank" maxlength="4" placeholder="Last 4">
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass6" name="QualityTech_options6" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail6" name="QualityTech_options6" value="Fail">
+                        <label for="Fail">Fail</label>
+                        <input type="radio" id="Fail6" name="QualityTech_options6" value="Fail">
+                        <label for="Fail">N/A</label>
+        </div>
+        <div>
+            <label for="G">Burst Test</label>
+            <label for="GTank">Tank #</label>
+            <input type="text" id="GTank" maxlength="4" placeholder="Last 4">
+            <label>Quality Tech:</label>
+                        <input type="radio" id="Pass7" name="QualityTech_options7" value="Pass">
+                        <label for="Pass">Pass</label>
+                        <input type="radio" id="Fail7" name="QualityTech_options7" value="Fail">
+                        <label for="Fail">Fail</label>
+                        <input type="radio" id="Fail7" name="QualityTech_options7" value="Fail">
+                        <label for="Fail">N/A</label>
+        </div>
+        <br><br>
+
+        <a href="index.html">
+            <button id="backBtn">Back</button>
+          </a>
+          <button id="submitBtn">Submit</button>
+
+    </main>
+	
+  </body>
+</html>
