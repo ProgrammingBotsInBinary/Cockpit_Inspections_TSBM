@@ -149,15 +149,36 @@ function handleNoahBtn() {
     window.location.href = "review_and_sign_off.html"
 }
 
+function handleMailBtn(){
+    const url = "http://localhost:3000/sendMail/";
+
+    const fetchObject = {
+            method: 'GET',
+            headers: {
+                'Content-Type' : 'text/html'
+            }
+        };
+        
+            fetch(url, fetchObject)
+            .then(response => response.json())
+            .then(jsonObject => {
+                //findNextStage(JSON.stringify(jsonObject));
+                findNextStage(jsonObject)
+                //console.log(jsonObject);
+            })
+}
+
 function start() {
     console.log("in start")
     const fetchExistingButton = document.querySelector('#fetchExistingBtn')
     const austinsBtn = document.querySelector('#austin')
     const noahBtn = document.querySelector('#noah')
+    const mailBtn = document.querySelector('#mail')
 
     fetchExistingButton.onclick = handleFetchExistingButton;
     austinsBtn.onclick = handleAustinsBtn;
     noahBtn.onclick = handleNoahBtn;
+    mailBtn.onclick = handleMailBtn
 }
 
 

@@ -6,6 +6,8 @@ const app = express();
 const fs = require('fs');
 var path = require('path')
 
+var nodemailer = require('nodemailer');
+
 
 const cors = require('cors');
 
@@ -64,6 +66,38 @@ app.post('/add1stPieceApprovalProcess', (req, res) => {
     data.first_piece_approval.push(supervisorData)
     console.log("data/" + "s" + shift + "d" + parsedDate + ".JSON")
     fs.writeFileSync("../data/" + "s" + shift + "d" + parsedDate + "p" + pressNum + ".JSON", JSON.stringify(data));
+
+    //send email
+    var transporter = nodemailer.createTransport({
+        
+        service: 'gmail',
+        auth: {
+            user: 'plasticmailer2022@gmail.com',
+            pass: "Plastic2022!"
+        },
+        tls: {
+            secureProtocol: "TLSv1_method"
+        }
+    });
+//jason.bean_ext@plasticomnium.com
+    var mailOptions = {
+        from: 'plasticmailer2022@gmail.com',
+        to: 'jasonb0820@gmail.com',
+        subject: "This is a node.js test!",
+        text: 'Success!'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log("email error ")
+            console.log(error);
+        }else {
+            console.log('email sent: ' + info.response);
+        }
+    })
+
+
+
 });
 
 app.post('/setupStabilizeComplete', (req, res) => {
