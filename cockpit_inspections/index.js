@@ -67,21 +67,25 @@ app.post('/add1stPieceApprovalProcess', (req, res) => {
     console.log("data/" + "s" + shift + "d" + parsedDate + ".JSON")
     fs.writeFileSync("../data/" + "s" + shift + "d" + parsedDate + "p" + pressNum + ".JSON", JSON.stringify(data));
 
+
+    //https://ourcodeworld.com/articles/read/264/how-to-send-an-email-gmail-outlook-and-zoho-using-nodemailer-in-node-js
     //send email
     var transporter = nodemailer.createTransport({
-        
-        service: 'gmail',
+        host: "smtp-mail.outlook.com",
+        secureConnection: false,
+        port: 587,
+        tls: {
+            ciphers: 'SSLv3'
+        },
         auth: {
-            user: 'plasticmailer2022@gmail.com',
+            user: 'cockpitInspection2022@outlook.com',
             pass: "Plastic2022!"
         },
-        tls: {
-            secureProtocol: "TLSv1_method"
-        }
+        
     });
 //jason.bean_ext@plasticomnium.com
     var mailOptions = {
-        from: 'plasticmailer2022@gmail.com',
+        from: 'cockpitInspection2022@outlook.com',
         to: 'jasonb0820@gmail.com',
         subject: "This is a node.js test!",
         text: 'Success!'
@@ -89,8 +93,7 @@ app.post('/add1stPieceApprovalProcess', (req, res) => {
 
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
-            console.log("email error ")
-            console.log(error);
+            console.log("email error ", error)
         }else {
             console.log('email sent: ' + info.response);
         }
@@ -243,6 +246,44 @@ app.post('/completeRemainingTesting', (req, res) => {
 
     fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
 })
+
+app.post('/reviewAndSignOff', (req, res) => {
+    console.log("write file reviewandsignoff")
+    let currDate = new Date().toLocaleDateString();
+    const date = (currDate).split('/');
+    const parsedDate = date[0] + date[1] + date[2];
+
+    var data = {}
+    data.first_piece_approval = []
+    data.setup_stabilize_complete = []
+    data.hotCheck = []
+    data.completeInitial1stPieceTesting = []
+    data.completeRemainingTesting = []
+    data.reviewAndSignOff = []
+    const reviewAndSignOff = {
+        q1: req.body.q1,
+        qualTechSignature: req.body.qualTechSignature,
+    };
+
+    //get data from last step
+    let prevData = JSON.parse(fs.readFileSync("../data/" + req.body.fileName + ".JSON", 'utf-8'))
+
+    console.log(prevData)
+    
+    data.first_piece_approval.push(prevData.first_piece_approval[0])
+    data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
+    data.hotCheck.push(prevData.hotCheck[0])
+    data.completeInitial1stPieceTesting.push(prevData.completeInitial1stPieceTesting[0])
+    data.completeRemainingTesting.push(prevData.completeRemainingTesting[0])
+    data.reviewAndSignOff.push(reviewAndSignOff)
+
+    console.log(data)
+
+    fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
+})
+
+
+
 
 app.listen('3000', () => {
     console.log('Listening on port 3000')

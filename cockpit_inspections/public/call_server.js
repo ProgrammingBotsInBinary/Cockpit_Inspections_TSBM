@@ -132,12 +132,16 @@ function findNextStage(data){
     }else if(data.hotCheck && !data.completeInitial1stPieceTesting){
         localStorage.setItem("fileName", fileName)
         window.location.href = "complete_initial_1st_piece_testing.html"
-    } else if(!data.completeRemainingTesting){
+    }else if(!data.completeRemainingTesting){
         localStorage.setItem("fileName", fileName)
         window.location.href = "complete_remaining_testing.html"
-    }else if(data.completeRemainingTesting) {
-        localStorage.setItem("fileName", fileName)
-        window.location.href = "final_document.html"
+    }else if(data.completeRemainingTesting && !data.reviewAndSignOff){
+        localStorage.setItem("fileName", fileName) 
+        window.location.href = "review_and_sign_off.html"
+    }
+    else if(data.reviewAndSignOff){
+        localStorage.setItem("filename", filename)
+        window.location.href = "index.html"
     }
 }
 

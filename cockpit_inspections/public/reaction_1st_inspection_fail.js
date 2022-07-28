@@ -13,7 +13,6 @@ function handleSubmitButtonWrite() {
         fileName: localStorage.getItem("fileName"),
         initial: initialValue,
         q1: q1Val,
-
     }
 
 
