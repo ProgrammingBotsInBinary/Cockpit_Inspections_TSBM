@@ -64,6 +64,18 @@ function fillFileds(data){
     
 }
 
+function pdf(){
+    var element = document.body;
+    var options = {
+        margin:       0,
+        filename:     'myfile.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 1.5 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait',precision: '12' }
+    };
+    html2pdf().set(options).from(element).save();
+}
+
 function start() {
     console.log("in start" + localStorage.getItem("fileName"))
 
@@ -85,7 +97,9 @@ function start() {
             .then(jsonObject => {
                 //findNextStage(JSON.stringify(jsonObject));
                 fillFileds(jsonObject)
-                //console.log(jsonObject);
+
+                //uncomment pdf() to auto download pdf of site
+                //pdf();
             })
             
             //console.log(JSON.stringify(fileData))
