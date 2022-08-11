@@ -212,6 +212,41 @@ app.post('/completeInitial1stPieceTesting', (req, res) => {
     fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
 })
 
+app.post('/reviewAndSignOff', (req, res) => {
+    console.log("write file reviewandsignoff")
+    let currDate = new Date().toLocaleDateString();
+    const date = (currDate).split('/');
+    const parsedDate = date[0] + date[1] + date[2];
+
+    var data = {}
+    data.first_piece_approval = []
+    data.setup_stabilize_complete = []
+    data.hotCheck = []
+    data.completeInitial1stPieceTesting = []
+    data.reviewAndSignOff = []
+    const reviewAndSignOff = {
+        q1: req.body.q1,
+        qualTechSignature: req.body.qualTechSignature,
+    };
+    console.log(reviewAndSignOff);
+
+    //get data from last step
+    let prevData = JSON.parse(fs.readFileSync("../data/" + req.body.fileName + ".JSON", 'utf-8'))
+
+    //console.log(prevData)
+    
+    data.first_piece_approval.push(prevData.first_piece_approval[0])
+    data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
+    data.hotCheck.push(prevData.hotCheck[0])
+    data.completeInitial1stPieceTesting.push(prevData.completeInitial1stPieceTesting[0])
+    data.reviewAndSignOff.push(reviewAndSignOff)
+
+    console.log("new data = \n")
+    console.log(data)
+
+    fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
+})
+
 app.post('/completeRemainingTesting', (req, res) => {
     console.log("write file crt check")
     let currDate = new Date().toLocaleDateString();
@@ -223,6 +258,7 @@ app.post('/completeRemainingTesting', (req, res) => {
     data.setup_stabilize_complete = []
     data.hotCheck = []
     data.completeInitial1stPieceTesting = []
+    data.reviewAndSignOff = []
     data.completeRemainingTesting = []
     const completeRemainingTesting = {
         q1: req.body.q1,
@@ -240,6 +276,7 @@ app.post('/completeRemainingTesting', (req, res) => {
     data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
     data.hotCheck.push(prevData.hotCheck[0])
     data.completeInitial1stPieceTesting.push(prevData.completeInitial1stPieceTesting[0])
+    data.reviewAndSignOff.push(prevData.reviewAndSignOff[0])
     data.completeRemainingTesting.push(completeRemainingTesting)
 
     console.log(data)
@@ -247,8 +284,8 @@ app.post('/completeRemainingTesting', (req, res) => {
     fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
 })
 
-app.post('/reviewAndSignOff', (req, res) => {
-    console.log("write file reviewandsignoff")
+app.post('/reaction1stInspectionFail', (req, res) => {
+    console.log("write file crt check")
     let currDate = new Date().toLocaleDateString();
     const date = (currDate).split('/');
     const parsedDate = date[0] + date[1] + date[2];
@@ -258,11 +295,12 @@ app.post('/reviewAndSignOff', (req, res) => {
     data.setup_stabilize_complete = []
     data.hotCheck = []
     data.completeInitial1stPieceTesting = []
-    data.completeRemainingTesting = []
     data.reviewAndSignOff = []
-    const reviewAndSignOff = {
+    data.completeRemainingTesting = []
+    data.reaction1stInspectionFail = []
+    const reaction1stInspectionFail = {
+        initial: req.body.initial,
         q1: req.body.q1,
-        qualTechSignature: req.body.qualTechSignature,
     };
 
     //get data from last step
@@ -274,13 +312,17 @@ app.post('/reviewAndSignOff', (req, res) => {
     data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
     data.hotCheck.push(prevData.hotCheck[0])
     data.completeInitial1stPieceTesting.push(prevData.completeInitial1stPieceTesting[0])
+    data.reviewAndSignOff.push(prevData.reviewAndSignOff[0])
     data.completeRemainingTesting.push(prevData.completeRemainingTesting[0])
-    data.reviewAndSignOff.push(reviewAndSignOff)
+    data.reaction1stInspectionFail.push(reaction1stInspectionFail)
+
 
     console.log(data)
 
     fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
 })
+
+
 
 
 

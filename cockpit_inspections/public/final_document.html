@@ -8,9 +8,8 @@
     <link rel = "stylesheet" href="Style/main.css">
     <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
     <script src="final_document.js"></script>
-    <
   </head>
-  <body style="background-color: darkslategray;">
+  <body style="background-color: lightblue;">
     <main>
       <!--Prepare for 1st Piece Approval Process-->
       <div id="page1">
@@ -288,7 +287,86 @@
         <br><br>
           </div>
 
+          <!-- Review and sign off -->
           
+
+          <div id="page5">
+            <p>Review and Sign-Off</p>
+            <label for="A">- All 1st Piece testing is complete; all tests passed</label>
+                    <label>Quality Tech.</label>
+                    <input type="radio" id="yes1" name="ProcessTech_options1" value="yes">
+                    <label for="yes">Yes</label>
+                    <input type="radio" id="no1" name="ProcessTech_options1" value="no">
+                    <label for="no">No</label>
+
+<br>
+
+<label for="qualityTechSignature">Quality Tech Signature:</label>
+<input type="text" id="qualityTechSignature" maxlength="255">
+
+</div>
+
+<!-- Complete Remaining Testing -->
+
+<br>
+
+<div id="page6">
+  <p>Complete Remaining Testing</p>
+    <label for="A">EVOH Thickness (thinnest location)</label>
+    <label>Quality Tech:</label>
+                <input type="radio" id="Pass1" name="QualityTech_options1" value="Pass">
+                    <label for="Pass">Pass</label>
+                <input type="radio" id="Fail1" name="QualityTech_options1" value="Fail">
+                    <label for="Fail">Fail</label>
+                <input type="radio" id="Fail1" name="QualityTech_options1" value="Fail">
+                    <label for="Fail">N/A</label>
+</div>
+<div>
+    <label for="B">Layer Analysis (includes EVOH thickness by section)</label>
+    <label>Quality Tech:</label>
+                <input type="radio" id="Pass2" name="QualityTech_options2" value="Pass">
+                    <label for="Pass">Pass</label>
+                <input type="radio" id="Fail2" name="QualityTech_options2" value="Fail">
+                    <label for="Fail">Fail</label>
+</div>
+<div>
+    <label for="C">Pinch Bend (all coquilles)</label>
+    <label>Quality Tech:</label>
+                <input type="radio" id="Pass3" name="QualityTech_options3" value="Pass">
+                    <label for="Pass">Pass</label>
+                <input type="radio" id="Fail3" name="QualityTech_options3" value="Fail">
+                    <label for="Fail">Fail</label>
+</div>
+<div>
+    <label for="D">Pinch Micotome</label>
+    <label>Quality Tech:</label>
+                <input type="radio" id="Pass4" name="QualityTech_options4" value="Pass">
+                    <label for="Pass">Pass</label>
+                <input type="radio" id="Fail4" name="QualityTech_options4" value="Fail">
+                    <label for="Fail">Fail</label>
+</div>
+
+<!-- Reaction If 1st Piece Inspection Fails: -->
+<div id="page7">
+<p>Reaction If 1st Piece Inspection Fails:</p>
+        <label>Supervisor's Initials:</label>
+        <select id="initials" name="initials">
+            <option value="JB">JB</option>
+            <option value="KC">KC</option>
+            <option value="JJ">JJ</option>
+          </select>  
+        <br>
+        <p>- Identify test failure: </p>
+        <div>
+            <label for="A">- Verify that all applicable tanks molded prior to the new 1st Piece have been scrapped or quarantined.</label>
+            <label>Supervisor: </label>
+                        <input type="radio" id="yes1" name="Supervisor_options1" value="Yes">
+                        <label for="Yes">Yes</label>
+                        <input type="radio" id="no1" name="Supervisor_options1" value="No">
+                        <label for="No">No</label>
+        </div>
+          
+        <br>
           <a href="index.html">
             <button id="backBtn">Back</button>
           </a>
