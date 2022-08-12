@@ -99,7 +99,7 @@ function start() {
                 fillFileds(jsonObject)
 
                 //uncomment pdf() to auto download pdf of site
-                //pdf();
+                pdf();
             })
             
             //console.log(JSON.stringify(fileData))
