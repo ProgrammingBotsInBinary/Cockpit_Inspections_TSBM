@@ -3,6 +3,58 @@
 
 //import {readJSON} from "../index.js"
 
+function checkStatus() {
+    let pressValue = 401
+    let shiftValue = 1
+    let currDate = new Date().toLocaleDateString();
+    const date = (currDate).split('/');
+    const parsedDate = date[0] + date[1] + date[2];
+
+    const url = "http://localhost:3000/getData/";
+
+    const span = document.getElementById('current')
+    console.log('bruh')
+
+    for(let i = 0; i < 8; i++){
+        for(let j = 0; j < 3; j++){
+            let fileName = "s" + shiftValue + 'd' + parsedDate + 'p' + pressValue;
+            console.log("File name = " + fileName + " , seeking url => " + url + fileName)
+    
+        // let data = readJSON(fileName);
+        // console.log("data recived: \n" + data)
+        
+            if("../data/" + fileName){
+                console.log("file found")
+                const fetchObject = {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type' : 'text/html'
+                    }
+                };
+                
+                    fetch(url + fileName, fetchObject)
+                    .then(response => response.json())
+                    .then(jsonObject => {
+                        if(!jsonObject.setup_stabilize_complete){
+                            span.innerHTML = `${shiftValue} shift ` + `${pressValue} press ` + 'setup stabilize complete'
+                        }else if(jsonObject.setup_stabilize_complete && !data.hotCheck){
+                            span.innerHTML = `${shiftValue} shift ` + `${pressValue} press ` + 'hot check'
+                        }
+                        
+                    })
+            }else {
+                console.log("file not found")
+            }
+            shiftValue++;
+        }
+        shiftValue = 1;
+        pressValue++;
+    }
+    
+    
+
+}
+
 function fillTable(data) {
     
     const table = document.getElementById("logsTable");
@@ -180,14 +232,17 @@ function handleMailBtn(){
 function start() {
     console.log("in start")
     const fetchExistingButton = document.querySelector('#fetchExistingBtn')
+    const checkStatusButton = document.querySelector("#checkStatusBtn")
     const austinsBtn = document.querySelector('#austin')
     const noahBtn = document.querySelector('#noah')
     const mailBtn = document.querySelector('#mail')
 
+    checkStatusButton.onclick = checkStatus;
+
     fetchExistingButton.onclick = handleFetchExistingButton;
     austinsBtn.onclick = handleAustinsBtn;
     noahBtn.onclick = handleNoahBtn;
-    mailBtn.onclick = handleMailBtn
+    mailBtn.onclick = handleMailBtn;
 }
 
 window.onload = start;
