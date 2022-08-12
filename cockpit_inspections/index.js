@@ -32,6 +32,17 @@ function readJSON(fileName) {
     })
 }
 
+app.get('/getData/', (req, res) => {
+    console.log("yes baby sweet data")
+    filesPresent = [];
+    fs.readdir("../data/", (err, files) => {
+        files.forEach(file => {
+            console.log("files found in data = " + file)
+            //filesPresent.push(file);
+        })
+    })
+    //res.send(filesPresent)
+});
 
 app.get('/getData/:fileName', (req, res) => {
     data = JSON.parse(fs.readFileSync("../data/" + req.params.fileName + ".JSON", 'utf8'));

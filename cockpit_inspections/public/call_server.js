@@ -15,41 +15,50 @@ function checkStatus() {
     const span = document.getElementById('current')
     console.log('bruh')
 
-    for(let i = 0; i < 8; i++){
-        for(let j = 0; j < 3; j++){
-            let fileName = "s" + shiftValue + 'd' + parsedDate + 'p' + pressValue;
-            console.log("File name = " + fileName + " , seeking url => " + url + fileName)
-    
-        // let data = readJSON(fileName);
-        // console.log("data recived: \n" + data)
-        
-            if("../data/" + fileName){
-                console.log("file found")
-                const fetchObject = {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type' : 'text/html'
-                    }
-                };
-                
-                    fetch(url + fileName, fetchObject)
-                    .then(response => response.json())
-                    .then(jsonObject => {
-                        if(!jsonObject.setup_stabilize_complete){
-                            span.innerHTML = `${shiftValue} shift ` + `${pressValue} press ` + 'setup stabilize complete'
-                        }else if(jsonObject.setup_stabilize_complete && !data.hotCheck){
-                            span.innerHTML = `${shiftValue} shift ` + `${pressValue} press ` + 'hot check'
-                        }
-                        
-                    })
-            }else {
-                console.log("file not found")
+    if("../data/"){
+        const fetchObject = {
+            method: 'GET',
+            headers: {
+                'Content-Type' : 'text/html'
             }
-            shiftValue++;
-        }
-        shiftValue = 1;
-        pressValue++;
+        };
+        
+            fetch(url, fetchObject)
+            .then(response => response.json())
+            .then(jsonObject => {
+                fillTable(jsonObject);
+            })
     }
+
+    // for(let i = 0; i < 8; i++){
+    //     for(let j = 0; j < 3; j++){
+    //         let fileName = "s" + shiftValue + 'd' + parsedDate + 'p' + pressValue;
+    //         console.log("File name = " + fileName + " , seeking url => " + url + fileName)
+    
+    //     // let data = readJSON(fileName);
+    //     // console.log("data recived: \n" + data)
+        
+    //         if("../data/"){
+    //             const fetchObject = {
+    //                 method: 'GET',
+    //                 headers: {
+    //                     'Content-Type' : 'text/html'
+    //                 }
+    //             };
+                
+    //                 fetch(url, fetchObject)
+    //                 .then(response => response.json())
+    //                 .then(jsonObject => {
+    //                     fillTable(jsonObject);
+    //                 })
+    //         }else {
+    //             console.log("file not found")
+    //         }
+    //         shiftValue++;
+    //     }
+    //     shiftValue = 1;
+    //     pressValue++;
+    // }
     
     
 
@@ -65,14 +74,16 @@ function fillTable(data) {
 
     data.forEach( item => {
         let row = table.insertRow();
-        let line = row.insertCell(0);
-        line.innerHTML = item.line;
-        let station = row.insertCell(1);
-        station.innerHTML = item.station;
-        let part = row.insertCell(2);
-        part.innerHTML = item.part;
-        let desc = row.insertCell(3);
-        desc.innerHTML = item.description;
+        let date = row.insertCell(0);
+        date.innerHTML = item.line;
+        let shift = row.insertCell(1);
+        shift.innerHTML = item.station;
+        let press = row.insertCell(2);
+        press.innerHTML = item.part;
+        let next = row.insertCell(3);
+        next.innerHTML = item.description;
+        let responsibility = row.insertCell(4);
+        responsibility.innerHTML = item.responsibility;
 
         let dateRow = row.insertCell(4);
         dateRow.innerHTML = item.date;
