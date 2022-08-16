@@ -59,9 +59,6 @@ function fillFileds(data){
     document.getElementById('below').value = data.hotCheck[0].below
 
     //Complete initial 1st piece testing
-
-    
-    
 }
 
 function pdf(){
@@ -99,7 +96,7 @@ function start() {
                 fillFileds(jsonObject)
 
                 //uncomment pdf() to auto download pdf of site
-                pdf();
+                //pdf();
             })
             
             //console.log(JSON.stringify(fileData))

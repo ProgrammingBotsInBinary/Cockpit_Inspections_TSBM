@@ -26,7 +26,7 @@ function checkStatus() {
             fetch(url, fetchObject)
             .then(response => response.json())
             .then(jsonObject => {
-                fillTable(jsonObject);
+                fillTableData(jsonObject);
             })
     }
 
@@ -64,9 +64,31 @@ function checkStatus() {
 
 }
 
+function getTableData(files) {
+
+    console.log("get table data: files to check = " + data)
+
+
+    const fetchObject = {
+        method: 'GET',
+        headers: {
+            'Content-Type' : 'text/html'
+        }
+    };
+    
+        fetch(url, fetchObject)
+        .then(response => response.json())
+        .then(jsonObject => {
+            fillTable(jsonObject);
+        })
+}
+
 function fillTable(data) {
     
     const table = document.getElementById("logsTable");
+
+    console.log(data)
+
 
     if(table.rows.length > 1){
         clearTable()
@@ -75,11 +97,11 @@ function fillTable(data) {
     data.forEach( item => {
         let row = table.insertRow();
         let date = row.insertCell(0);
-        date.innerHTML = item.line;
+        date.innerHTML = item.date;
         let shift = row.insertCell(1);
-        shift.innerHTML = item.station;
+        shift.innerHTML = item.shift;
         let press = row.insertCell(2);
-        press.innerHTML = item.part;
+        press.innerHTML = item.pressNum;
         let next = row.insertCell(3);
         next.innerHTML = item.description;
         let responsibility = row.insertCell(4);
@@ -94,15 +116,15 @@ function fillTable(data) {
         let signature = row.insertCell(6);
         signature.innerHTML = item.signature;
 
-        let deleteItem = row.insertCell(7);
-        deleteBtn = document.createElement("button")
-        deleteBtn.id = item.id
-        deleteBtn.innerHTML = "delete"
-        deleteBtn.onclick = function() {
-            console.log("delete clicked \n")
-            handleDeleteButton(item.id)
-        };
-        deleteItem.appendChild(deleteBtn)
+        // let deleteItem = row.insertCell(7);
+        // deleteBtn = document.createElement("button")
+        // deleteBtn.id = item.id
+        // deleteBtn.innerHTML = "delete"
+        // deleteBtn.onclick = function() {
+        //     console.log("delete clicked \n")
+        //     handleDeleteButton(item.id)
+        // };
+        // deleteItem.appendChild(deleteBtn)
 
         //who needs to edit anyway
         // let editItem = row.insertCell(4);

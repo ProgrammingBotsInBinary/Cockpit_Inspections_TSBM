@@ -32,23 +32,31 @@ function readJSON(fileName) {
     })
 }
 
+
 app.get('/getData/', (req, res) => {
     console.log("yes baby sweet data")
-    filesPresent = [];
+    // var filesPresent = {};
+    // filesPresent.files = [];
+    var filesPresent = []
+    
     fs.readdir("../data/", (err, files) => {
+        //get all of the files that are present 
         files.forEach(file => {
             console.log("files found in data = " + file)
-            //filesPresent.push(file);
+            //filesPresent.files.push(file);
+            filesPresent.push(file);
         })
+        console.log(filesPresent)
+        //read the files and store the data we need
+    res.send(filesPresent)
     })
-    //res.send(filesPresent)
+    
 });
 
 app.get('/getData/:fileName', (req, res) => {
     data = JSON.parse(fs.readFileSync("../data/" + req.params.fileName + ".JSON", 'utf8'));
     console.log('received from client: ' + req.query.first_piece_approval)
     data = JSON.stringify(data);
-    dataLength = data.length;
     
     res.send(data);
 });
