@@ -26,7 +26,7 @@ function checkStatus() {
             fetch(url, fetchObject)
             .then(response => response.json())
             .then(jsonObject => {
-                fillTableData(jsonObject);
+                fillTable(jsonObject);
             })
     }
 
@@ -103,18 +103,10 @@ function fillTable(data) {
         let press = row.insertCell(2);
         press.innerHTML = item.pressNum;
         let next = row.insertCell(3);
-        next.innerHTML = item.description;
+        next.innerHTML = item.next;
         let responsibility = row.insertCell(4);
         responsibility.innerHTML = item.responsibility;
 
-        let dateRow = row.insertCell(4);
-        dateRow.innerHTML = item.date;
-
-        let timeRow = row.insertCell(5);
-        timeRow.innerHTML = item.time;
-
-        let signature = row.insertCell(6);
-        signature.innerHTML = item.signature;
 
         // let deleteItem = row.insertCell(7);
         // deleteBtn = document.createElement("button")

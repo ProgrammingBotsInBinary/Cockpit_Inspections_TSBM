@@ -8,7 +8,6 @@ var path = require('path')
 
 var nodemailer = require('nodemailer');
 
-
 const cors = require('cors');
 
 app.use(cors({origin: '*'}));
@@ -32,23 +31,60 @@ function readJSON(fileName) {
     })
 }
 
-
 app.get('/getData/', (req, res) => {
     console.log("yes baby sweet data")
-    // var filesPresent = {};
-    // filesPresent.files = [];
-    var filesPresent = []
+    var fileData = {};
+    var fileDataArr = [];
+    var nextStage;
+    var responsibility;
     
     fs.readdir("../data/", (err, files) => {
         //get all of the files that are present 
         files.forEach(file => {
-            console.log("files found in data = " + file)
-            //filesPresent.files.push(file);
-            filesPresent.push(file);
+            
+            data = JSON.parse(fs.readFileSync("../data/" + file, 'utf8'))
+            console.log(data)
+            //data = JSON.stringify(data);
+
+            //find next phase
+            if(!data.setup_stabilize_complete){
+                nextStage = "setup stabilize complete"
+                responsibility = "Process Tech"
+            }else if(!data.hotCheck){
+                nextStage = "hot check"
+                responsibility = "Quailty Tech"
+            }else if(data.hotCheck && !data.completeInitial1stPieceTesting){
+                nextStage = "Complete Initial 1st Piece Testing"
+                responsibility = "Quailty Tech"
+            }else if(data.completeInitial1stPieceTesting && !data.reviewAndSignOff){
+                nextStage = "Review and Sign-Off"
+                responsibility = "Quailty Tech"
+            }else if(data.reviewAndSignOff && !data.completeRemainingTesting){
+                nextStage = "complete remaining testing"
+                responsibility = "Quailty Tech"
+            } // need review / sign off 2
+        
+            else if(data.completeRemainingTesting && !data.reaction1stInspectionFail){
+                nextStage = "reaction 1st inspection fail"
+                responsibility = "Supervisor"
+            }else if(data.reaction1stInspectionFail && !data.final){
+                nextStage = "final document html"
+                responsibility = "IDK dude whoever do that"
+            }
+            
+            fileData = {
+                date: data.first_piece_approval[0].date,
+                shift: data.first_piece_approval[0].shift,
+                pressNum: data.first_piece_approval[0].pressNum,
+                next: nextStage,
+                responsibility: responsibility,
+            }
+            fileDataArr.push(fileData);
+            console.log(fileDataArr)
         })
-        console.log(filesPresent)
+        
         //read the files and store the data we need
-    res.send(filesPresent)
+    res.send(fileDataArr)
     })
     
 });
@@ -340,11 +376,6 @@ app.post('/reaction1stInspectionFail', (req, res) => {
 
     fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
 })
-
-
-
-
-
 
 app.listen('3000', () => {
     console.log('Listening on port 3000')
