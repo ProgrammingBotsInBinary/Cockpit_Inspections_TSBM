@@ -5,15 +5,18 @@ function fillFileds(data){
 
     console.log(data[0])
 
-    document.getElementById('initials').value = data.first_piece_approval[0].initial
+    document.getElementById('Supervisor_Initials1').value = data.first_piece_approval[0].initial
 
-    document.getElementById('shift').value = data.first_piece_approval[0].shift
+    document.getElementById('1_Shift').value = data.first_piece_approval[0].shift
    
-    document.getElementById('press').value = data.first_piece_approval[0].pressNum
+    document.getElementById('Press').value = data.first_piece_approval[0].pressNum
 
-    document.getElementById('cavity').value = data.first_piece_approval[0].cavityNum
+    document.getElementById('Cavity').value = data.first_piece_approval[0].cavityNum
 
-    document.getElementById('partName').value = data.first_piece_approval[0].part
+    document.getElementById('1_PartName').value = data.first_piece_approval[0].part
+    
+    
+    
 
     let currDate = new Date().toLocaleDateString();
     let currTime = new Date().toLocaleTimeString();
@@ -50,7 +53,7 @@ function fillFileds(data){
     //hot check
 
     document.getElementById('partNum').value = data.hotCheck[0].partNum
-    document.getElementById('hotCheckInitials').value = data.hotCheck[0].initial
+    document.getElementById('QT_Initials1').value = data.hotCheck[0].initial
     var valueQ1 = data.hotCheck[0].q1
     document.querySelector(`input[name=hot_check_options1][value=${valueQ1}]`).checked = true
     document.getElementById('zone1').value = data.hotCheck[0].zone1
@@ -59,7 +62,49 @@ function fillFileds(data){
     document.getElementById('below').value = data.hotCheck[0].below
 
     //Complete initial 1st piece testing
-}
+    document.getElementById('QT_Initials2').value = data.completeInitial1stPieceTesting[0].initial
+    document.getElementById('TLabel').value = data.completeInitial1stPieceTesting[0].partNum
+    var valueQ = data.completeInitial1stPieceTesting[0].q1
+    document.querySelector(`input[name=QualityTech_options1][value=${valueQ}]`).checked = true
+    var valueQ = data.completeInitial1stPieceTesting[0].q2
+    document.querySelector(`input[name=QualityTech_options2][value=${valueQ}]`).checked = true
+    var valueQ = data.completeInitial1stPieceTesting[0].q3
+    document.querySelector(`input[name=QualityTech_options3][value=${valueQ}]`).checked = true
+    var valueQ = data.completeInitial1stPieceTesting[0].q4
+    document.querySelector(`input[name=QualityTech_options4][value=${valueQ}]`).checked = true
+    var valueQ = data.completeInitial1stPieceTesting[0].q5
+    document.querySelector(`input[name=QualityTech_options5][value=${valueQ}]`).checked = true
+    document.getElementById('FTank').value = data.completeInitial1stPieceTesting[0].tank1
+    var valueQ = data.completeInitial1stPieceTesting[0].q6
+    document.querySelector(`input[name=QualityTech_options6][value=${valueQ}]`).checked = true
+    document.getElementById('GTank').value = data.completeInitial1stPieceTesting[0].tank2
+    var valueQ = data.completeInitial1stPieceTesting[0].q7
+    document.querySelector(`input[name=QualityTech_options7][value=${valueQ}]`).checked = true
+
+    //Review and Sign Off
+    var valueQ = data.reviewAndSignOff[0].q1
+    document.querySelector(`input[name=ProcessTech_options7][value=${valueQ}]`).checked = true
+    document.getElementById('qualityTechSignature').value = data.reviewAndSignOff[0].qualTechSignature
+
+    //Complete Remaining Testing
+    var valueQ = data.completeRemainingTesting[0].q1
+    document.querySelector(`input[name=QualityTech_options8][value=${valueQ}]`).checked = true
+    var valueQ = data.completeRemainingTesting[0].q2
+    document.querySelector(`input[name=QualityTech_options9][value=${valueQ}]`).checked = true
+    var valueQ = data.completeRemainingTesting[0].q3
+    document.querySelector(`input[name=QualityTech_options10][value=${valueQ}]`).checked = true
+    var valueQ = data.completeRemainingTesting[0].q4
+    document.querySelector(`input[name=QualityTech_options11][value=${valueQ}]`).checked = true
+
+    //Reaction If 1st Piece Inspection Fails
+    document.getElementById('Supervisor_Initials2').value = data.reaction1stInspectionFail[0].initial
+    var valueQ = data.reaction1stInspectionFail[0].q1
+    document.querySelector(`input[name=Supervisor_options1][value=${valueQ}]`).checked = true
+
+
+
+
+}   
 
 function pdf(){
     var element = document.body;
@@ -94,6 +139,7 @@ function start() {
             .then(jsonObject => {
                 //findNextStage(JSON.stringify(jsonObject));
                 fillFileds(jsonObject)
+                console.log(jsonObject)
 
                 //uncomment pdf() to auto download pdf of site
                 //pdf();

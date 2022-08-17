@@ -17,21 +17,21 @@
         <p>Prepare for 1st Piece Approval Process</p>
         <br>
         <label>Supervisor's Initials:</label>
-        <select id="initials" name="initials">
+        <select id="Supervisor_Initials1" name="initials">
             <option value="JB">JB</option>
             <option value="KC">KC</option>
             <option value="JJ">JJ</option>
           </select>  
 
           <label>Shift:</label>
-        <select id="shift" name="shift">
+        <select id="1_Shift" name="shift">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
           </select>  
 
           <label>Press #</label>
-        <select id="press" name="press">
+        <select id="Press" name="press">
             <option value="401">401</option>
           <option value="402">402</option>
           <option value="403">403</option>
@@ -43,7 +43,7 @@
           </select>  
 
           <label>Cavity #</label>
-        <select id="cavity" name="cavity">
+        <select id="Cavity" name="cavity">
             <option value="401">401</option>
           <option value="402">402</option>
           <option value="403">403</option>
@@ -54,8 +54,8 @@
           <option value="409">409</option>
           </select>  
 
-          <label for="partName">Name of part:</label>
-            <input type="text" id="partName" maxlength="255">
+          <label for="1_PartName">Name of part:</label>
+            <input type="text" id="1_PartName" maxlength="255">
 
             <br><br>
 
@@ -172,7 +172,7 @@
             <input type="text" id="partNum" maxlength="4" placeholder="Last 4">
 
             <label> Quality Tech's Initials:</label>
-            <select id="hotCheckInitials" name="initials">
+            <select id="QT_Initials1" name="initials">
                 <option value="JB">JB</option>
                 <option value="KC">KC</option>
                 <option value="JJ">JJ</option>
@@ -204,18 +204,20 @@
             <p>- Any FAILURES found at Hot check resubmit and attach T-Labels to back of form (reason why & where)</p>
           </div>
 
+          <!-- complete initial 1st piece testing -->
+
           <div id="page4">
             <p>Complete Initial 1st Piece Testing</p>
         <label>Quality Tech's Initials:</label>
-        <select id="initials" name="initials">
+        <select id="QT_Initials2" name="initials">
             <option value="JB">JB</option>
             <option value="KC">KC</option>
             <option value="JJ">JJ</option>
           </select>  
           <br>
           <p>- Identify lowest T-label # from submitted samples</p>
-          <label for="partNum">Lowest Tank T-Label #:</label>
-            <input type="text" id="partNum" maxlength="4">
+          <label for="TLabel">Lowest Tank T-Label #:</label>
+            <input type="text" id="TLabel" maxlength="4">
 
         <div>
             <label for="A">CMM (Dimensional's)</label>
@@ -293,9 +295,9 @@
             <p>Review and Sign-Off</p>
             <label for="A">- All 1st Piece testing is complete; all tests passed</label>
                     <label>Quality Tech.</label>
-                    <input type="radio" id="yes1" name="ProcessTech_options1" value="yes">
+                    <input type="radio" id="yes1" name="ProcessTech_options7" value="yes">
                     <label for="yes">Yes</label>
-                    <input type="radio" id="no1" name="ProcessTech_options1" value="no">
+                    <input type="radio" id="no1" name="ProcessTech_options7" value="no">
                     <label for="no">No</label>
 
 <br>
@@ -313,35 +315,35 @@
   <p>Complete Remaining Testing</p>
     <label for="A">EVOH Thickness (thinnest location)</label>
     <label>Quality Tech:</label>
-                <input type="radio" id="Pass1" name="QualityTech_options1" value="Pass">
+                <input type="radio" id="Pass1" name="QualityTech_options8" value="Pass">
                     <label for="Pass">Pass</label>
-                <input type="radio" id="Fail1" name="QualityTech_options1" value="Fail">
+                <input type="radio" id="Fail1" name="QualityTech_options8" value="Fail">
                     <label for="Fail">Fail</label>
-                <input type="radio" id="Fail1" name="QualityTech_options1" value="Fail">
+                <input type="radio" id="Fail1" name="QualityTech_options8" value="Fail">
                     <label for="Fail">N/A</label>
 </div>
 <div>
     <label for="B">Layer Analysis (includes EVOH thickness by section)</label>
     <label>Quality Tech:</label>
-                <input type="radio" id="Pass2" name="QualityTech_options2" value="Pass">
+                <input type="radio" id="Pass2" name="QualityTech_options9" value="Pass">
                     <label for="Pass">Pass</label>
-                <input type="radio" id="Fail2" name="QualityTech_options2" value="Fail">
+                <input type="radio" id="Fail2" name="QualityTech_options9" value="Fail">
                     <label for="Fail">Fail</label>
 </div>
 <div>
     <label for="C">Pinch Bend (all coquilles)</label>
     <label>Quality Tech:</label>
-                <input type="radio" id="Pass3" name="QualityTech_options3" value="Pass">
+                <input type="radio" id="Pass3" name="QualityTech_options10" value="Pass">
                     <label for="Pass">Pass</label>
-                <input type="radio" id="Fail3" name="QualityTech_options3" value="Fail">
+                <input type="radio" id="Fail3" name="QualityTech_options10" value="Fail">
                     <label for="Fail">Fail</label>
 </div>
 <div>
     <label for="D">Pinch Micotome</label>
     <label>Quality Tech:</label>
-                <input type="radio" id="Pass4" name="QualityTech_options4" value="Pass">
+                <input type="radio" id="Pass4" name="QualityTech_options11" value="Pass">
                     <label for="Pass">Pass</label>
-                <input type="radio" id="Fail4" name="QualityTech_options4" value="Fail">
+                <input type="radio" id="Fail4" name="QualityTech_options11" value="Fail">
                     <label for="Fail">Fail</label>
 </div>
 
@@ -349,7 +351,7 @@
 <div id="page7">
 <p>Reaction If 1st Piece Inspection Fails:</p>
         <label>Supervisor's Initials:</label>
-        <select id="initials" name="initials">
+        <select id="Supervisor_Initials2" name="initials">
             <option value="JB">JB</option>
             <option value="KC">KC</option>
             <option value="JJ">JJ</option>
