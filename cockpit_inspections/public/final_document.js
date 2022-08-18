@@ -1,4 +1,4 @@
-function fillFileds(data){
+function fillFields(data){
     console.log(data)
     
     //first piece inspection
@@ -138,7 +138,7 @@ function start() {
             .then(response => response.json())
             .then(jsonObject => {
                 //findNextStage(JSON.stringify(jsonObject));
-                fillFileds(jsonObject)
+                fillFields(jsonObject)
                 console.log(jsonObject)
 
                 //uncomment pdf() to auto download pdf of site

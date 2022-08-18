@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prepare for 1st Piece Approval Process</title>
+    <link rel = "stylesheet" href="Style/main.css">
+    <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
+    <script src="production_super_signature.js"></script>
+  </head>
+  <body style="background-color: darkslategray;">
+    <main>
+
+        
+        <label> Production Supervisor Signature: </label>
+        <label for="production_signature"></label>
+            <input type="text" id="ProductionSignature" maxlength="30"> 
+
+        <br><br>
+        <br><br>
+        <p>Hot Check</p>
+        
+        <label for="partNum">Hot Check Tank #</label>
+            <input type="text" id="partNum" maxlength="4" placeholder="Last 4">
+
+            <label> Quality Tech's Initials:</label>
+            <select id="QT_Initials1" name="initials">
+                <option value="JB">JB</option>
+                <option value="KC">KC</option>
+                <option value="JJ">JJ</option>
+              </select>  
+
+              <br><br>
+
+              <label>- Verify wall thickness (after coquile) including all the external corners (high draw areas)</label>
+              <label>Quality tech:</label>
+              <input type="radio" id="yes1" name="hot_check_options1" value="yes">
+                    <label for="yes">Yes</label>
+              <input type="radio" id="no1" name="hot_check_options1" value="no">
+                    <label for="no">no</label>
+
+              <br><br>
+              <label>- Verify thickness above and below pinch. Record the minimum zones.</label>
+              <label> Quality Tech:</label>
+              <label for="zone1#">Zone#</label>
+            <input type="text" id="zone1" maxlength="6">
+            <label for="above">Above</label>
+            <input type="text" id="above" maxlength="6">
+
+            <label for="zone2#">Zone#</label>
+            <input type="text" id="zone2" maxlength="6">
+            <label for="below">Below</label>
+            <input type="text" id="below" maxlength="6">
+
+            <p>Fix this</p>
+            <p>- Any FAILURES found at Hot check resubmit and attach T-Labels to back of form (reason why & where)</p>
+
+
+            <a href="index.html">
+                <button id="backBtn">Back</button>
+              </a>
+              <button id="submitBtn">Submit</button>
+
+    </main>
+	
+  </body>
+</html>

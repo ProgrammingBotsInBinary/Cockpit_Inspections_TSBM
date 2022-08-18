@@ -53,7 +53,10 @@ app.get('/getData/', (req, res) => {
             }else if(!data.hotCheck){
                 nextStage = "hot check"
                 responsibility = "Quailty Tech"
-            }else if(data.hotCheck && !data.completeInitial1stPieceTesting){
+            }else if(data.hotCheck && !data.productionSupervisorSignature){
+                nextStage = "Production Supervisor Signature"
+                responsibility = "Supervisor"
+            }else if(data.productionSupervisorSignature && !data.completeInitial1stPieceTesting){
                 nextStage = "Complete Initial 1st Piece Testing"
                 responsibility = "Quailty Tech"
             }else if(data.completeInitial1stPieceTesting && !data.reviewAndSignOff){
@@ -98,7 +101,7 @@ app.get('/getData/:fileName', (req, res) => {
 });
 
 app.post('/add1stPieceApprovalProcess', (req, res) => {
-    console.log("write file")
+    console.log("write file add1stPieceApprovalProcess")
     const date = (req.body.date).split('/');
     const parsedDate = date[0] + date[1] + date[2];
     const shift = req.body.shift;
@@ -159,7 +162,7 @@ app.post('/add1stPieceApprovalProcess', (req, res) => {
 });
 
 app.post('/setupStabilizeComplete', (req, res) => {
-    console.log("write file")
+    console.log("write file setupStabilizeComplete")
     let currDate = new Date().toLocaleDateString();
     const date = (currDate).split('/');
     const parsedDate = date[0] + date[1] + date[2];
@@ -227,8 +230,8 @@ app.post('/hotCheck', (req, res) => {
     fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
 })
 
-app.post('/completeInitial1stPieceTesting', (req, res) => {
-    console.log("write file hot check")
+app.post('/productionSupervisorSignature', (req, res) => {
+    console.log("write file productionSupervisorSignature")
     let currDate = new Date().toLocaleDateString();
     const date = (currDate).split('/');
     const parsedDate = date[0] + date[1] + date[2];
@@ -237,6 +240,37 @@ app.post('/completeInitial1stPieceTesting', (req, res) => {
     data.first_piece_approval = []
     data.setup_stabilize_complete = []
     data.hotCheck = []
+    data.productionSupervisorSignature = []
+    const productionSupervisorSignature = {
+        ProductionSignature: req.body.ProductionSignature,
+    };
+
+    //get data from last step
+    let prevData = JSON.parse(fs.readFileSync("../data/" + req.body.fileName + ".JSON", 'utf-8'))
+
+    console.log(prevData)
+    
+    data.first_piece_approval.push(prevData.first_piece_approval[0])
+    data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
+    data.hotCheck.push(prevData.hotCheck[0])
+    data.productionSupervisorSignature.push(productionSupervisorSignature)
+
+    console.log(data)
+
+    fs.writeFileSync("../data/" + req.body.fileName + ".JSON", JSON.stringify(data));
+})
+
+app.post('/completeInitial1stPieceTesting', (req, res) => {
+    console.log("write file completeInitial1stPieceTesting")
+    let currDate = new Date().toLocaleDateString();
+    const date = (currDate).split('/');
+    const parsedDate = date[0] + date[1] + date[2];
+
+    var data = {}
+    data.first_piece_approval = []
+    data.setup_stabilize_complete = []
+    data.hotCheck = []
+    data.productionSupervisorSignature = []
     data.completeInitial1stPieceTesting = []
     const completeInitial1stPieceTesting = {
         initial: req.body.initial,
@@ -260,6 +294,7 @@ app.post('/completeInitial1stPieceTesting', (req, res) => {
     data.first_piece_approval.push(prevData.first_piece_approval[0])
     data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
     data.hotCheck.push(prevData.hotCheck[0])
+    data.productionSupervisorSignature.push(prevData.productionSupervisorSignature[0])
     data.completeInitial1stPieceTesting.push(completeInitial1stPieceTesting)
 
     console.log(data)
@@ -277,6 +312,7 @@ app.post('/reviewAndSignOff', (req, res) => {
     data.first_piece_approval = []
     data.setup_stabilize_complete = []
     data.hotCheck = []
+    data.productionSupervisorSignature = []
     data.completeInitial1stPieceTesting = []
     data.reviewAndSignOff = []
     const reviewAndSignOff = {
@@ -293,6 +329,7 @@ app.post('/reviewAndSignOff', (req, res) => {
     data.first_piece_approval.push(prevData.first_piece_approval[0])
     data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
     data.hotCheck.push(prevData.hotCheck[0])
+    data.productionSupervisorSignature.push(prevData.productionSupervisorSignature[0])
     data.completeInitial1stPieceTesting.push(prevData.completeInitial1stPieceTesting[0])
     data.reviewAndSignOff.push(reviewAndSignOff)
 
@@ -303,7 +340,7 @@ app.post('/reviewAndSignOff', (req, res) => {
 })
 
 app.post('/completeRemainingTesting', (req, res) => {
-    console.log("write file crt check")
+    console.log("write file completeRemainingTesting")
     let currDate = new Date().toLocaleDateString();
     const date = (currDate).split('/');
     const parsedDate = date[0] + date[1] + date[2];
@@ -312,6 +349,7 @@ app.post('/completeRemainingTesting', (req, res) => {
     data.first_piece_approval = []
     data.setup_stabilize_complete = []
     data.hotCheck = []
+    data.productionSupervisorSignature = []
     data.completeInitial1stPieceTesting = []
     data.reviewAndSignOff = []
     data.completeRemainingTesting = []
@@ -330,6 +368,7 @@ app.post('/completeRemainingTesting', (req, res) => {
     data.first_piece_approval.push(prevData.first_piece_approval[0])
     data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
     data.hotCheck.push(prevData.hotCheck[0])
+    data.productionSupervisorSignature.push(prevData.productionSupervisorSignature[0])
     data.completeInitial1stPieceTesting.push(prevData.completeInitial1stPieceTesting[0])
     data.reviewAndSignOff.push(prevData.reviewAndSignOff[0])
     data.completeRemainingTesting.push(completeRemainingTesting)
@@ -340,7 +379,7 @@ app.post('/completeRemainingTesting', (req, res) => {
 })
 
 app.post('/reaction1stInspectionFail', (req, res) => {
-    console.log("write file crt check")
+    console.log("write file reaction 1st inspection fail")
     let currDate = new Date().toLocaleDateString();
     const date = (currDate).split('/');
     const parsedDate = date[0] + date[1] + date[2];
@@ -349,6 +388,7 @@ app.post('/reaction1stInspectionFail', (req, res) => {
     data.first_piece_approval = []
     data.setup_stabilize_complete = []
     data.hotCheck = []
+    data.productionSupervisorSignature = []
     data.completeInitial1stPieceTesting = []
     data.reviewAndSignOff = []
     data.completeRemainingTesting = []
@@ -366,6 +406,7 @@ app.post('/reaction1stInspectionFail', (req, res) => {
     data.first_piece_approval.push(prevData.first_piece_approval[0])
     data.setup_stabilize_complete.push(prevData.setup_stabilize_complete[0])
     data.hotCheck.push(prevData.hotCheck[0])
+    data.productionSupervisorSignature.push(prevData.productionSupervisorSignature[0])
     data.completeInitial1stPieceTesting.push(prevData.completeInitial1stPieceTesting[0])
     data.reviewAndSignOff.push(prevData.reviewAndSignOff[0])
     data.completeRemainingTesting.push(prevData.completeRemainingTesting[0])

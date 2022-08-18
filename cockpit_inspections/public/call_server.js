@@ -206,7 +206,10 @@ function findNextStage(data){
     }else if(!data.hotCheck){
         localStorage.setItem("fileName", fileName)
         window.location.href = "hot_check.html"
-    }else if(data.hotCheck && !data.completeInitial1stPieceTesting){
+    }else if(data.hotCheck && !data.productionSupervisorSignature){
+        localStorage.setItem("fileName", fileName)
+        window.location.href = "production_super_signature.html"
+    }else if(data.productionSupervisorSignature && !data.completeInitial1stPieceTesting){
         localStorage.setItem("fileName", fileName)
         window.location.href = "complete_initial_1st_piece_testing.html"
     }else if(data.completeInitial1stPieceTesting && !data.reviewAndSignOff){
@@ -228,7 +231,7 @@ function findNextStage(data){
 }
 
 function handleAustinsBtn() {
-    window.location.href = "reaction_1st_inspection_fail.html"
+    window.location.href = "production_super_signature.html"
 }
 
 function handleNoahBtn() {
@@ -265,9 +268,7 @@ function start() {
     checkStatusButton.onclick = checkStatus;
 
     fetchExistingButton.onclick = handleFetchExistingButton;
-    austinsBtn.onclick = handleAustinsBtn;
-    noahBtn.onclick = handleNoahBtn;
-    mailBtn.onclick = handleMailBtn;
+    //mailBtn.onclick = handleMailBtn;
 }
 
 window.onload = start;

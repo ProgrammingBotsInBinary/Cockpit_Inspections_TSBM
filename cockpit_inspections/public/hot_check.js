@@ -51,7 +51,7 @@ function handleSubmitButtonWrite() {
 
 
 function start() {
-    
+    console.log("I am in the hot check start")
     const submitButton = document.querySelector('#submitBtn');
 
     submitButton.onclick = handleSubmitButtonWrite;
