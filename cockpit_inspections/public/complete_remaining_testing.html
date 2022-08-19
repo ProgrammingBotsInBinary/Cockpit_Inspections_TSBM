@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Setup, Stabilize, & Complete "Hot Check" Tank</title>
+    <title>Complete Remaining Testing</title>
     <link rel = "stylesheet" href="Style/main.css">
     <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
     <script src="complete_remaining_testing.js"></script>
@@ -12,20 +12,23 @@
   <body style="background-color: darkgray;">
     <main>
         <p>Complete Remaining Testing</p>
-        <br></br>
+        <br><br>
 
+        
         <div>
-            <label for="A">EVOH Thickness (thinnest location)</label>
+            <label for="A">- Layer Analysis (includes EVOH thickness by section)</label>
+            &nbsp; 
+            <label>Qty:1</label>
+            &nbsp;
             <label>Quality Tech:</label>
                         <input type="radio" id="Pass1" name="QualityTech_options1" value="Pass">
                         <label for="Pass">Pass</label>
                         <input type="radio" id="Fail1" name="QualityTech_options1" value="Fail">
                         <label for="Fail">Fail</label>
-                        <input type="radio" id="Fail1" name="QualityTech_options1" value="Fail">
-                        <label for="Fail">N/A</label>
         </div>
         <div>
-            <label for="B">Layer Analysis (includes EVOH thickness by section)</label>
+            <label for="B">- Pinch Bend (all coquilles)</label>
+            <label>Qty:4</label>
             <label>Quality Tech:</label>
                         <input type="radio" id="Pass2" name="QualityTech_options2" value="Pass">
                         <label for="Pass">Pass</label>
@@ -33,7 +36,8 @@
                         <label for="Fail">Fail</label>
         </div>
         <div>
-            <label for="C">Pinch Bend (all coquilles)</label>
+            <label for="C">- Pinch Micotome (all coquilles)</label>
+            <label>Qty:4</label>
             <label>Quality Tech:</label>
                         <input type="radio" id="Pass3" name="QualityTech_options3" value="Pass">
                         <label for="Pass">Pass</label>
@@ -41,14 +45,40 @@
                         <label for="Fail">Fail</label>
         </div>
         <div>
-            <label for="D">Pinch Micotome</label>
-            <label>Quality Tech:</label>
-                        <input type="radio" id="Pass4" name="QualityTech_options4" value="Pass">
-                        <label for="Pass">Pass</label>
-                        <input type="radio" id="Fail4" name="QualityTech_options4" value="Fail">
-                        <label for="Fail">Fail</label>
+          <label for="D">- Pillar Micotome (RU only -top/bottom -see form)</label>
+          <label>Qty:1</label>
+          <label>Quality Tech:</label>
+                      <input type="radio" id="Pass4" name="QualityTech_options4" value="Pass">
+                      <label for="Pass">Pass</label>
+                      <input type="radio" id="Fail4" name="QualityTech_options4" value="Fail">
+                      <label for="Fail">Fail</label>
+                      <input type="radio" id="NA1" name="QualityTech_options4" value="NA">
+                      <label for="NA">N/A</label>
         </div>
-        
+        <div>
+          <label for="E">- Internal weld microtome</label>
+          <label>Qty:1</label>
+          <label>Quality Tech:</label>
+                      <input type="radio" id="Pass5" name="QualityTech_options5" value="Pass">
+                      <label for="Pass">Pass</label>
+                      <input type="radio" id="Fail5" name="QualityTech_options5" value="Fail">
+                      <label for="Fail">Fail</label>
+        </div>
+        <br><br>
+        <div>
+          <label for="D">- Sled Test(WK Only) </label>
+          <label for="1Tank">Tank #</label>
+            <input type="text" id="1Tank" maxlength="4" placeholder="Last 4">
+          <label for="2Tank">Tank #</label>
+            <input type="text" id="2Tank" maxlength="4" placeholder="Last 4">  
+          <label>Quality Tech:</label>
+                      <input type="radio" id="Pass4" name="QualityTech_options6" value="Pass">
+                      <label for="Pass">Pass</label>
+                      <input type="radio" id="Fail4" name="QualityTech_options6" value="Fail">
+                      <label for="Fail">Fail</label>
+                      <input type="radio" id="NA1" name="QualityTech_options6" value="NA">
+                      <label for="NA">N/A</label>
+        </div>
         
         <br><br>
 

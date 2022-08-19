@@ -9,7 +9,7 @@ function handleSubmitButtonWrite() {
 
     let q3Val = document.querySelector('input[name=QualityTech_options3]:checked').value
 
-    let q4Val = document.querySelector('input[name=QualityTech_options4]:checked').value
+    //let q4Val = document.querySelector('input[name=QualityTech_options4]:checked').value
 
 
 

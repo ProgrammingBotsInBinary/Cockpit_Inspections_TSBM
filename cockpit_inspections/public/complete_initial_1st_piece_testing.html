@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Setup, Stabilize, & Complete "Hot Check" Tank</title>
+    <title>Complete Initial 1st Piece Testing</title>
     <link rel = "stylesheet" href="Style/main.css">
     <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
     <script src="complete_initial_1st_piece_testing.js"></script>
@@ -21,7 +21,7 @@
           <br>
           <p>- Identify lowest T-label # from submitted samples</p>
           <label for="partNum">Lowest Tank T-Label #:</label>
-            <input type="text" id="partNum" maxlength="4">
+            <input type="text" id="partNum" maxlength="16">
 
         <div>
             <label for="A">CMM (Dimensional's)</label>
@@ -90,6 +90,20 @@
                         <label for="Fail">N/A</label>
         </div>
         <br><br>
+
+        <label>7. Review and Sign-Off</label>
+            <div>
+              <label for="H">- Above testing is completed; all tests passed </label>
+                      <label>Process Tech.</label>
+                      <input type="radio" id="yes1" name="QualityTech_options8" value="yes">
+                      <label for="yes">Yes</label>
+                      <input type="radio" id="no1" name="QualityTech_options8" value="no">
+                      <label for="no">No</label>
+            </div>    
+            <label for="Qual_Tech_Signature">Quality Tech Signature: </label>
+            <input type="text" id="Qual_Tech_Signature" maxlength="30">
+
+            <br><br>
 
         <a href="index.html">
             <button id="backBtn">Back</button>
