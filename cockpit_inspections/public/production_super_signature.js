@@ -18,7 +18,7 @@ function handleSubmitButtonWrite() {
     
     const url = "http://localhost:3000/productionSupervisorSignature"
 
-    let ProductionSignatureVal = document.getElementById('#ProductionSignature').value
+    let ProductionSignatureVal = document.getElementById('ProductionSignature').value
 
     const dataObject = {
         fileName: localStorage.getItem("fileName"),
